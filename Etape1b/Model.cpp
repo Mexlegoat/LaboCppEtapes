@@ -9,7 +9,13 @@ Model::Model()
 	engine = Petrol; 
 
 }
-
+Model::~Model()
+{
+	if (name != nullptr)
+	{
+		delete[] name;	
+	}
+}
 
 
 
@@ -45,7 +51,7 @@ const char* Model::getName()
 	}
 	else
 	{
-		return 0;
+		return "Modele sans nom";
 	}
 }
 int Model::getPower()

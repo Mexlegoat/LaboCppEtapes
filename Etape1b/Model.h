@@ -12,7 +12,7 @@ private:
 
 public:
   Model();
-
+  ~Model();
   void display();
   void setName(const char* modelName);
   void setPower(int power);
