@@ -11,6 +11,7 @@ Model::Model()
 }
 Model::~Model()
 {
+	cout << "destructeur" << endl;
 	if (name != nullptr)
 	{
 		delete[] name;	
