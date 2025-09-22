@@ -11,7 +11,7 @@ Model::Model()
 }
 Model::~Model()
 {
-	cout << "destructeur" << endl;
+	cout << "liberation d'allocation dynamique" << endl;
 	if (name != nullptr)
 	{
 		delete[] name;	
@@ -22,6 +22,7 @@ Model::~Model()
 
 
 // Autres Fonctions
+// setters
 void Model::setName(const char* modelName)
 {
 	name = new char [strlen(modelName) + 1];
@@ -39,11 +40,30 @@ void Model::setBasePrice(float modelBasePrice)
 {
 	basePrice = modelBasePrice;
 }
+// display
 void Model::display()
 {
 
 	cout << "Puissance: " << power << " Prix de base :" << basePrice << endl;
+	cout<< "Moteur: ";
+	switch(engine)
+	{
+		case Petrol:
+			cout << "Petrol";
+			break;
+		case Diesel:
+			cout << "Diesel";
+			break;
+		case Electric:
+			cout << "Electric";
+			break;
+		case Hybrid:
+			cout << "Hybrid";
+			break;
+	}
+	cout<< endl;
 } 
+// getters
 const char* Model::getName()
 {
 	if (name != nullptr)

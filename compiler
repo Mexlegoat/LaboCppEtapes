@@ -1,2 +1,0 @@
-g++ Model.cpp -c
-g++ Test1.cpp Model.o -o Test1
