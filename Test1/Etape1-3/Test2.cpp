@@ -22,25 +22,25 @@ int main()
   //   model.display();
   // } // La presence des accolades assure que le destructeur de Model sera appele --> a tracer !
 
-  cout << endl << "(2) ***** Test des setters et getters ***********************************" << endl;
-  {
-    Model model;
-    model.setName("208 Active 1.5 BlueHDi 5P");
-    model.setPower(100);
-    model.setEngine(Engine::Diesel);
-    model.setBasePrice(21800.0f);
-    model.display();
-    cout << "Nom          = " << model.getName() << endl;
-    cout << "Puissance    = " << model.getPower() << " Ch" << endl;
-    cout << "Moteur       = " << model.getEngine() << endl;
-    cout << "Prix de base = " << model.getBasePrice() << " euros" << endl;
-  }
-
-  // cout << endl << "(3) ***** Test du constructeur d'initialisation *************************" << endl;
+  // cout << endl << "(2) ***** Test des setters et getters ***********************************" << endl;
   // {
-  //   Model model("308 Allure 1.6 Hybrid 5P",150,Engine::Hybrid,38650.0f);
+  //   Model model;
+  //   model.setName("208 Active 1.5 BlueHDi 5P");
+  //   model.setPower(100);
+  //   model.setEngine(Engine::Diesel);
+  //   model.setBasePrice(21800.0f);
   //   model.display();
+  //   cout << "Nom          = " << model.getName() << endl;
+  //   cout << "Puissance    = " << model.getPower() << " Ch" << endl;
+  //   cout << "Moteur       = " << model.getEngine() << endl;
+  //   cout << "Prix de base = " << model.getBasePrice() << " euros" << endl;
   // }
+
+  cout << endl << "(3) ***** Test du constructeur d'initialisation *************************" << endl;
+  {
+    Model model("308 Allure 1.6 Hybrid 5P",150,Engine::Hybrid,38650.0f);
+    model.display();
+  }
 
   // cout << endl << "(4) ***** Test du constructeur de copie *********************************" << endl;
   // {
@@ -86,4 +86,3 @@ int main()
 
   return 0;
 }
-
