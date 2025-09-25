@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// #include "Model.h"
+#include "Model.h"
 
 // Quelques conseils avant de commencer...
 // * N'oubliez pas de tracer (cout << ...) tous les constructeurs et le destructeur !!! Ca, c'est pas un conseil,
@@ -20,7 +20,7 @@ int main()
   // {
   //   Model model;
   //   model.display();
-  } // La presence des accolades assure que le destructeur de Model sera appele --> a tracer !
+  // } // La presence des accolades assure que le destructeur de Model sera appele --> a tracer !
 
   cout << endl << "(2) ***** Test des setters et getters ***********************************" << endl;
   {

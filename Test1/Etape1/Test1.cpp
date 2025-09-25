@@ -34,7 +34,7 @@ int main()
   //   cout << "Puissance    = " << model.getPower() << " Ch" << endl;
   //   cout << "Moteur       = " << model.getEngine() << endl;
   //   cout << "Prix de base = " << model.getBasePrice() << " euros" << endl;
-  }
+  // }
 
   // cout << endl << "(3) ***** Test du constructeur d'initialisation *************************" << endl;
   // {
