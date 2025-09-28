@@ -12,27 +12,10 @@ Model::Model()
 
 Model::Model(const char *nom, int puissance, Engine moteur, float prix)
 {
-	setPower(puissance);
-	setEngine(moteur);
-	setBasePrice(prix);
-	name = nullptr;
-	setName(nom);
-}
-Model::Model(const Model &source)
-{
-	power = source.power;
-	basePrice = source.basePrice;
-	engine = source.engine;
-
-	if (source.name)
-	{
-		name = new char[strlen(source.name) + 1];
-		strcpy(name, source.name);
-	}
-	else
-	{
-		name = nullptr;
-	}
+	name = nom;
+	power = puissance;
+	engine = moteur;
+	basePrice = prix;
 }
 Model::~Model()
 {
@@ -47,24 +30,6 @@ Model::~Model()
 
 
 // Autres Fonctions
-// setters
-void Model::setName(const char* modelName)
-{
-	name = new char [strlen(modelName) + 1];
-	strcpy(name, modelName);
-}
-void Model::setPower(int modelPower)
-{
-	power = modelPower;
-}
-void Model::setEngine(Engine modelEngine)
-{
-	engine = modelEngine;
-}
-void Model::setBasePrice(float modelBasePrice)
-{
-	basePrice = modelBasePrice;
-}
 // display
 void Model::display()
 {
@@ -89,26 +54,3 @@ void Model::display()
 	cout<< endl;
 } 
 // getters
-const char* Model::getName()
-{
-	if (name != nullptr)
-	{
-		return name;
-	}
-	else
-	{
-		return "Modele sans nom";
-	}
-}
-int Model::getPower()
-{
-	return power;
-}
-Engine Model::getEngine()
-{
-	return engine;
-}
-float Model::getBasePrice()
-{
-	return basePrice;
-}
