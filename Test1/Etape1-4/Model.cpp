@@ -30,6 +30,23 @@ Model::~Model()
 
 
 // Autres Fonctions
+void Model::setName(const char* modelName)
+{
+	name = new char [strlen(modelName) + 1];
+	strcpy(name, modelName);
+}
+void Model::setPower(int modelPower)
+{
+	power = modelPower;
+}
+void Model::setEngine(Engine modelEngine)
+{
+	engine = modelEngine;
+}
+void Model::setBasePrice(float modelBasePrice)
+{
+	basePrice = modelBasePrice;
+}
 // display
 void Model::display()
 {
@@ -54,3 +71,26 @@ void Model::display()
 	cout<< endl;
 } 
 // getters
+const char* Model::getName()
+{
+	if (name != nullptr)
+	{
+		return name;
+	}
+	else
+	{
+		return "Modele sans nom";
+	}
+}
+int Model::getPower()
+{
+	return power;
+}
+Engine Model::getEngine()
+{
+	return engine;
+}
+float Model::getBasePrice()
+{
+	return basePrice;
+}
