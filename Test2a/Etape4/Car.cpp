@@ -21,6 +21,19 @@ Car::Car(const char* nom, Model m)
 	strcpy(name, nom);
 	model = m;
 }
+Car::Car(const Car &source)
+{
+	if (source.name != nullptr)
+	{
+		name = new char[strlen(source.name) + 1];
+		strcpy(name, source.name);
+	}
+	else
+	{
+		name = nullptr;
+	}
+	model = source.model;
+}
 // Autres fonctions
 // display
 void Car::display()

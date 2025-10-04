@@ -14,6 +14,7 @@ private:
 public:
 	Car();
 	Car(const char* nom, Model m);
+	Car(const Car &source);
 	~Car();
 	void display();
 	void setName(const char* n);
