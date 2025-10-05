@@ -9,18 +9,17 @@ using namespace carconfig;
 class Car
 {
 private:
-	char* name;
+	string name;
 	Model model;
 	Option* option[5];
 
 public:
 	Car();
-	~Car();
-	Car(const char* n, Model m);
+	Car(const string n, Model m);
 	void display();
-	void setName(const char* n);
+	void setName(const string n);
 	void setModel(Model m);
 	Model getModel();
-	char* getName();
+	string getName();
 };
 #endif

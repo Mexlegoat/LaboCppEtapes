@@ -1,19 +1,11 @@
 #include <cstring>
 #include "Car.h"
 // Constructeurs
-
+using namespace std;
 Car::Car()
 {
-	name = nullptr;
+	name = "Modele sans nom";
 	model = Model();
-}
-Car::~Car()
-{
-	cout << "Destructeur" << endl;
-	if (name != nullptr)
-	{
-		delete[] name;
-	}
 }
 
 // Autres fonctions
@@ -24,10 +16,9 @@ void Car::display()
 	model.display();
 }
 // setters
-void Car::setName(const char* copy)
+void Car::setName(const string copy)
 {
-	name = new char[strlen(copy) + 1];
-	strcpy(name, copy);
+	name = copy;
 }
 
 void Car::setModel(Model m)
@@ -39,7 +30,7 @@ Model Car::getModel()
 {
 	return model;
 }
-char* Car::getName()
+string Car::getName()
 {
 	return name;
 }

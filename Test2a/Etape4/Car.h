@@ -8,18 +8,17 @@ using namespace std;
 class Car
 {
 private:
-	char* name;
+	string name;
 	Model model;
 
 public:
 	Car();
-	Car(const char* nom, Model m);
+	Car(const string nom, Model m);
 	Car(const Car &source);
-	~Car();
 	void display();
-	void setName(const char* n);
+	void setName(const string n);
 	void setModel(Model m);
 	Model getModel();
-	char* getName();
+	string getName();
 };
 #endif

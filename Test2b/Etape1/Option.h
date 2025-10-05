@@ -8,13 +8,12 @@ namespace carconfig
 	class Option
 	{
 	private:
-		char* code;
-		char* label;
+		string code;
+		string label;
 		float price;
 
 	public:
 		Option();
-		~Option();
 		void display();
 	};
 }

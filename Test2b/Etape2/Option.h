@@ -8,16 +8,15 @@ namespace carconfig
 	class Option
 	{
 	private:
-		char* code;
-		char* label;
+		string code;
+		string label;
 		float price;
 
 	public:
 		Option();
-		~Option();
 		void display();
-		void setCode(const char* c);
-		void setLabel(const char* l);
+		void setCode(const string c);
+		void setLabel(const string l);
 		void setPrice(float p);
 	};
 }

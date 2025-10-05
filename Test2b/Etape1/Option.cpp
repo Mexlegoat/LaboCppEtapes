@@ -3,21 +3,9 @@ namespace carconfig
 {
 	Option::Option()
 	{
-		code = new char[5];
-		label = new char[20];
+		code = "0000";
+		label = "Modele sans nom";
 		price = 0;
-	}
-	Option::~Option()
-	{
-		cout << "Destructeur";
-		if (code != nullptr)
-		{
-			delete[] code;
-		}
-		if (label != nullptr)
-		{
-			delete[] label;
-		}
 	}
 	void Option::display()
 	{

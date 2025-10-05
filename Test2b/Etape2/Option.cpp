@@ -4,22 +4,9 @@ namespace carconfig
 	// Constructeurs
 	Option::Option()
 	{
-		code = new char[5];
-		label = new char[20];
+		code = "0000";
+		label = "Modele sans nom";
 		price = 0;
-	}
-	// Destructeur
-	Option::~Option()
-	{
-		cout << "Destructeur";
-		if (code != nullptr)
-		{
-			delete[] code;
-		}
-		if (label != nullptr)
-		{
-			delete[] label;
-		}
 	}
 	// Affichage
 	void Option::display()
@@ -27,13 +14,13 @@ namespace carconfig
 		cout << "Code: " << code << endl << "Nom: " << label << endl << "Prix: " << price << endl;
 	}
 	// Setters
-	void Option::setCode(const char* c)
+	void Option::setCode(const string c)
 	{
-		strcpy(code, c);
+		code = c;
 	}
-	void Option::setLabel(const char* l)
+	void Option::setLabel(const string l)
 	{
-		strcpy(label, l);
+		label = l;
 	}
 	void Option::setPrice(float l)
 	{

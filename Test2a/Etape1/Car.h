@@ -1,16 +1,15 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include "Model.h"
 using namespace std;
 
 class Car
 {
 private:
-	char* name;
+	string name;
 	// Model model;
 
 public:
 	Car();
-	~Car();
 	void display();
 };

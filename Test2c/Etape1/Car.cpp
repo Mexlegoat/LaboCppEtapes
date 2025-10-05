@@ -4,32 +4,16 @@
 
 Car::Car()
 {
-	name = nullptr;
+	name = "Modele sans nom";
 	model = Model();
 	for (int i = 0; i < 5; i++)
 	{
 		option[i] = nullptr;
 	}
 }
-Car::~Car()
+Car::Car(const string nom, Model m)
 {
-	cout << "Destructeur" << endl;
-	if (name != nullptr)
-	{
-		delete[] name;
-	}
-	for(int i = 0; i < 5; i++)
-	{
-		if (option[i] != nullptr)
-		{
-			delete[] option[i];
-		}
-	}
-}
-Car::Car(const char* nom, Model m)
-{
-	name = new char[strlen(nom) + 1];
-	strcpy(name, nom);
+	name = nom;
 	model = m;
 
 	for (int i = 0; i < 5; i++)
@@ -58,10 +42,9 @@ void Car::display()
 	}
 }
 // setters
-void Car::setName(const char* copy)
+void Car::setName(const string copy)
 {
-	name = new char[strlen(copy) + 1];
-	strcpy(name, copy);
+	name = copy;
 }
 
 void Car::setModel(Model m)
@@ -73,7 +56,7 @@ Model Car::getModel()
 {
 	return model;
 }
-char* Car::getName()
+string Car::getName()
 {
 	return name;
 }

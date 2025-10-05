@@ -4,53 +4,22 @@ namespace carconfig
 	// Constructeurs
 	Option::Option()
 	{
-		code = nullptr;
-		label = nullptr;
+		code = "0000";
+		label = "Modele sans nom";
 		price = 0;
 	}
-	Option::Option(const char* c, const char* l, float p)
+	Option::Option(const string c, const string l, float p)
 	{
-		code = new char[strlen(c) + 1];
-		strcpy(code, c);
-		label = new char[strlen(l) + 1];
-		strcpy(label, l);
+		code = c;
+		label = l;
 		price = p;
 	}
 	Option::Option(const Option &source)
 	{
 		price = source.price;
-		if (source.code != nullptr)
-		{
-			code = new char[strlen(source.code) + 1];
-			strcpy(code, source.code);
-		}
-		else
-		{
-			code = nullptr;
-		}
-		if (source.label != nullptr)
-		{
-			label = new char[strlen(source.label) + 1];
-			strcpy(label, source.label);
-		}
-		else
-		{
-			label = nullptr;
-		}
+		label = source.label;
+		code = source.code;
 		
-	}
-	// Destructeur
-	Option::~Option()
-	{
-		cout << "[Option] Destructeur des variables: code et label" << endl;
-		if (code != nullptr)
-		{
-			delete[] code;
-		}
-		if (label != nullptr)
-		{
-			delete[] label;
-		}
 	}
 	// Affichage
 	void Option::display()
@@ -58,15 +27,13 @@ namespace carconfig
 		cout << "Code: " << code << endl << "Nom: " << label << endl << "Prix: " << price << endl;
 	}
 	// Setters
-	void Option::setCode(const char* c)
+	void Option::setCode(const string c)
 	{
-		delete[] code;
-		strcpy(code, c);
+		code = c;
 	}
-	void Option::setLabel(const char* l)
+	void Option::setLabel(const string l)
 	{
-		delete[] label;
-		strcpy(label, l);
+		label = l;
 	}
 	void Option::setPrice(float l)
 	{

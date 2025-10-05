@@ -1,21 +1,12 @@
 #include <cstring>
 #include "Car.h"
 // Constructeurs
-
+using namespace std;
 Car::Car()
 {
-	name = new char[50];
+	name = "Modele sans nom";
 	// model = Model();
 }
-Car::~Car()
-{
-	cout << "liberation d'allocation dynamique" << endl;
-	if (name != nullptr)
-	{
-		delete[] name;
-	}
-}
-
 // Autres fonctions
 void Car::display()
 {
