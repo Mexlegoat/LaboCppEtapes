@@ -27,7 +27,7 @@ int main(int argc,char* argv[])
     switch(choix)
     {
       case 1 : Essai1(); break;
-      // case 2 : Essai2(); break;
+      case 2 : Essai2(); break;
       // case 3 : Essai3(); break;
       // case 4 : Essai4(); break;
       // case 5 : Essai5(); break;
@@ -98,30 +98,30 @@ void Essai1()
 /*******************************************************************************************************/
 /*** Tests des operateurs + de la classe Car ***********************************************************/
 /*******************************************************************************************************/
-// void Essai2()
-// {
-//   std::cout << std::endl << "********************************************************************" << std::endl;
-//   std::cout <<              "(2) ***** Tests des operateurs + de Car ****************************" << std::endl;
-//   std::cout <<              "********************************************************************" << std::endl;
+void Essai2()
+{
+  std::cout << std::endl << "********************************************************************" << std::endl;
+  std::cout <<              "(2) ***** Tests des operateurs + de Car ****************************" << std::endl;
+  std::cout <<              "********************************************************************" << std::endl;
   
-//   Car c("Projet_208_MrDugenou",Model("208 Access 1.0",68,Engine::Petrol,12500.0f)),c2;
-//   std::cout << "---- c (avant) --------------------------" << std::endl;
-//   c.display();
-//   {
-//     Option op1("VD09","Vitres laterales arriere surteintees",150.0f);
-//     Option op2("0MM0","Peinture metallisee",450.0f);
-//     std::cout << ">>>>> c2 = c + op1;" << std::endl;
-//     c2 = c + op1;
-//     std::cout << ">>>>> c2 = c2 + Option(...Pack Cuir...);" << std::endl;
-//     c2 = c2 + Option("0P3U","Pack Cuir ambiance Mistral",1100.0f);
-//     std::cout << ">>>>> c2 = op2 + c2;" << std::endl;
-//     c2 = op2 + c2;
-//   }
-//   std::cout << "---- c (apres) --------------------------" << std::endl; // c ne doit pas etre modifie !!!!
-//   c.display();
-//   std::cout << "---- c2 (c + 3 options) ------------------------" << std::endl;
-//   c2.display();
-// }
+  Car c("Projet_208_MrDugenou",Model("208 Access 1.0",68,Engine::Petrol,12500.0f)),c2;
+  std::cout << "---- c (avant) --------------------------" << std::endl;
+  c.display();
+  {
+    Option op1("VD09","Vitres laterales arriere surteintees",150.0f);
+    Option op2("0MM0","Peinture metallisee",450.0f);
+    std::cout << ">>>>> c2 = c + op1;" << std::endl;
+    c2 = c + op1;
+    std::cout << ">>>>> c2 = c2 + Option(...Pack Cuir...);" << std::endl;
+    c2 = c2 + Option("0P3U","Pack Cuir ambiance Mistral",1100.0f);
+    std::cout << ">>>>> c2 = op2 + c2;" << std::endl;
+    c2 = op2 + c2;
+  }
+  std::cout << "---- c (apres) --------------------------" << std::endl; // c ne doit pas etre modifie !!!!
+  c.display();
+  std::cout << "---- c2 (c + 3 options) ------------------------" << std::endl;
+  c2.display();
+}
 
 // /*******************************************************************************************************/
 // /*** Tests des opérateurs - de la classe Car ***********************************************************/
