@@ -1,138 +1,140 @@
 #include <cstring>
 #include "Car.h"
 // Constructeurs
-
-Car::Car()
+namespace carconfig
 {
-	name = "Modele sans nom";
-	model = Model();
-	for (int i = 0; i < 5; i++)
+	Car::Car()
 	{
-		option[i] = nullptr;
-	}
-}
-Car::Car(const string nom, Model m)
-{
-	name = nom;
-	model = m;
-
-	for (int i = 0; i < 5; i++)
-	{
-		option[i] = nullptr;
-	}
-}
-Car::Car(const Car &source)
-{
-	name = source.name;
-	model = source.model;
-	for (int i = 0; i < 5; i++)
-	{
-		if (source.option[i] != nullptr)
-		{
-			option[i] = new Option(*source.option[i]);
-		}
-		else
+		name = "Modele sans nom";
+		model = Model();
+		for (int i = 0; i < 5; i++)
 		{
 			option[i] = nullptr;
 		}
 	}
-}
-Car::~Car()
-{
-	cout << "Destructeur" << endl;
-	for (int i = 0; i < 5; i++)
+	Car::Car(const string nom, Model m)
 	{
-		if (option[i] != nullptr)
+		name = nom;
+		model = m;
+
+		for (int i = 0; i < 5; i++)
 		{
-			delete option[i];
 			option[i] = nullptr;
+		}
+	}
+	Car::Car(const Car &source)
+	{
+		name = source.name;
+		model = source.model;
+		for (int i = 0; i < 5; i++)
+		{
+			if (source.option[i] != nullptr)
+			{
+				option[i] = new Option(*source.option[i]);
+			}
+			else
+			{
+				option[i] = nullptr;
+			}
+		}
+	}
+	Car::~Car()
+	{
+		cout << "Destructeur" << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				delete option[i];
+				option[i] = nullptr;
 
+			}
 		}
 	}
-}
-// Autres fonctions
-// display
-void Car::display()
-{
-	cout << name << endl;
-	model.display();
-	bool isTrue = false;
-	for (int i = 0; i < 5; i++)
+	// Autres fonctions
+	// display
+	void Car::display()
 	{
-		if (option[i] != nullptr)
+		cout << name << endl;
+		model.display();
+		bool isTrue = false;
+		for (int i = 0; i < 5; i++)
 		{
-			cout << "Option " << i+1 << " :" << endl;
-			option[i]->display();
-			isTrue = true;
+			if (option[i] != nullptr)
+			{
+				cout << "Option " << i+1 << " :" << endl;
+				option[i]->display();
+				isTrue = true;
+			}
 		}
+		if (!isTrue)
+		{
+			cout << "Aucune option detectee" << endl;
+		}
+		cout << endl << endl;
 	}
-	if (!isTrue)
+	// setters
+	void Car::setName(const string copy)
 	{
-		cout << "Aucune option detectee" << endl;
+		name = copy;
 	}
-	cout << endl << endl;
-}
-// setters
-void Car::setName(const string copy)
-{
-	name = copy;
-}
 
-void Car::setModel(Model m)
-{
-	model = m;
-}
-void Car::addOption(const Option& o)
-{
-	int i;
-	for (i = 0; i < 5; i++)
+	void Car::setModel(Model m)
 	{
-		if (option[i] == nullptr)
-		{
-			option[i] = new Option(o);
-			return;
-		}
+		model = m;
 	}
-	cout << "Impossible d'ajouter plus que 5 options" << endl;
-}
-// getters
-Model Car::getModel()
-{
-	return model;
-}
-string Car::getName()
-{
-	return name;
-}
-float Car::getPrice()
-{
-	int i;
-	float sum = model.getBasePrice();
-	for (i = 0; i < 5; i++)
+	void Car::addOption(const Option& o)
 	{
-		if (option[i] != nullptr)
+		int i;
+		for (i = 0; i < 5; i++)
 		{
-			sum += option[i]->getPrice();
+			if (option[i] == nullptr)
+			{
+				option[i] = new Option(o);
+				return;
+			}
 		}
+		cout << "Impossible d'ajouter plus que 5 options" << endl;
 	}
-	return sum;
-}
-// Autres fonctions:
-void Car::removeOption(string code)
-{
-	int i;
-	for (i = 0; i < 5; i++)
+	// getters
+	Model Car::getModel()
 	{
-		if (option[i]->getCode() == code)
+		return model;
+	}
+	string Car::getName()
+	{
+		return name;
+	}
+	float Car::getPrice()
+	{
+		int i;
+		float sum = model.getBasePrice();
+		for (i = 0; i < 5; i++)
 		{
-			delete option[i];
-			option[i] = nullptr;
+			if (option[i] != nullptr)
+			{
+				sum += option[i]->getPrice();
+			}
+		}
+		return sum;
+	}
+	// Autres fonctions:
+	void Car::removeOption(string code)
+	{
+		int i;
+		for (i = 0; i < 5; i++)
+		{
+			if (option[i]->getCode() == code)
+			{
+				delete option[i];
+				option[i] = nullptr;
 
-			return;
+				return;
+			}
 		}
-	}
-	if (option[i]->getCode() != code)
-	{
-		cout << "L'option n'existe pas" << endl;
+		if (option[i]->getCode() != code)
+		{
+			cout << "L'option n'existe pas" << endl;
+		}
 	}
 }

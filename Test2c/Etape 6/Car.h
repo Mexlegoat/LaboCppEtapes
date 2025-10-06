@@ -5,26 +5,28 @@
 #include "Model.h"
 #include "Option.h"
 using namespace std;
-using namespace carconfig;
-class Car
+namespace carconfig
 {
-private:
-	string name;
-	Model model;
-	Option* option[5];
+	class Car
+	{
+	private:
+		string name;
+		Model model;
+		Option* option[5];
 
-public:
-	Car();
-	Car(const string n, Model m);
-	Car(const Car &source);
-	~Car();
-	void display();
-	void addOption(const Option& option);
-	void setName(const string n);
-	void setModel(Model m);
-	void removeOption(string);
-	Model getModel();
-	string getName();
-	float getPrice();
-};
+	public:
+		Car();
+		Car(const string n, Model m);
+		Car(const Car &source);
+		~Car();
+		void display();
+		void addOption(const Option& option);
+		void setName(const string n);
+		void setModel(Model m);
+		void removeOption(string);
+		Model getModel();
+		string getName();
+		float getPrice();
+	};
+}
 #endif
