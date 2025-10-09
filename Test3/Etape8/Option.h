@@ -18,6 +18,8 @@ namespace carconfig
 		Option(const Option &source);
 		friend istream& operator>>(istream& s, Option& o);
 		friend ostream& operator<<(ostream& s, const Option& o);
+		Option operator--();
+		Option operator--(int);
 		void display();
 		void setCode(const string c);
 		void setLabel(const string l);

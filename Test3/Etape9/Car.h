@@ -26,6 +26,7 @@ namespace carconfig
 		bool operator==(const Car& c) const;
 		friend ostream& operator<<(ostream& s, const Car& c);
 		friend Car operator+(const Option& o, const Car& c);
+		Option* operator[](int);
 		~Car();
 		Car& operator= (const Car&);
 		void display();

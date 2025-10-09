@@ -33,7 +33,7 @@ int main(int argc,char* argv[])
       case 5 : Essai5(); break;
       case 6 : Essai6(); break;
       case 7 : Essai7(); break;
-      // case 8 : Essai8(); break;
+      case 8 : Essai8(); break;
       // case 9 : Essai9(); break;
       default : fini = true ; break;
     }
@@ -225,26 +225,26 @@ void Essai7()
 // /*******************************************************************************************************/
 // /*** Tests des operateurs de pre/post decrementation de la classe Option *******************************/
 // /*******************************************************************************************************/
-// void Essai8()
-// {
-//   std::cout << "**********************************************************************" << std::endl;
-//   std::cout << "(8.a) ***** Test de l'operateur de pre-decrementation ****************" << std::endl;
-//   std::cout << "**********************************************************************" << std::endl;
-//   Option op1("0MM0","Peinture metallisee",450.0f);
-//   std::cout << "Affichons d'abord op1 : " << op1 << std::endl;
-//   std::cout << "Resultat de std::cout << --op1 << std::endl; :" << std::endl;  
-//   std::cout << --op1 << std::endl;        // Si tout va bien, op1 est decremente avant d'etre affiche !
-//   std::cout << "et on reaffiche op1 : " << op1 << std::endl << std::endl;
+void Essai8()
+{
+  std::cout << "**********************************************************************" << std::endl;
+  std::cout << "(8.a) ***** Test de l'operateur de pre-decrementation ****************" << std::endl;
+  std::cout << "**********************************************************************" << std::endl;
+  Option op1("0MM0","Peinture metallisee",450.0f);
+  std::cout << "Affichons d'abord op1 : " << op1 << std::endl;
+  std::cout << "Resultat de std::cout << --op1 << std::endl; :" << std::endl;  
+  std::cout << --op1 << std::endl;        // Si tout va bien, op1 est decremente avant d'etre affiche !
+  std::cout << "et on reaffiche op1 : " << op1 << std::endl << std::endl;
 
-//   std::cout << "**********************************************************************" << std::endl;
-//   std::cout << "(8.b) ***** Test de l'operateur de post-decrementation ***************" << std::endl;
-//   std::cout << "**********************************************************************" << std::endl;
-//   Option op2("ZH75","Jantes alliage 15 pouces",350.0f);
-//   std::cout << "Affichons d'abord op2 : " << op2 << std::endl;
-//   std::cout << "Resultat de std::cout << op2-- << std::endl; :" << std::endl;  
-//   std::cout << op2-- << std::endl;        // Si tout va bien, op2 est decremente apres avoir ete affiche !
-//   std::cout << "et on reaffiche op2 : " << op2 << std::endl << std::endl;
-// }
+  std::cout << "**********************************************************************" << std::endl;
+  std::cout << "(8.b) ***** Test de l'operateur de post-decrementation ***************" << std::endl;
+  std::cout << "**********************************************************************" << std::endl;
+  Option op2("ZH75","Jantes alliage 15 pouces",350.0f);
+  std::cout << "Affichons d'abord op2 : " << op2 << std::endl;
+  std::cout << "Resultat de std::cout << op2-- << std::endl; :" << std::endl;  
+  std::cout << op2-- << std::endl;        // Si tout va bien, op2 est decremente apres avoir ete affiche !
+  std::cout << "et on reaffiche op2 : " << op2 << std::endl << std::endl;
+}
 
 // /*******************************************************************************************************/
 // /*** Tests de l'opérateur [] de la classe Car **********************************************************/

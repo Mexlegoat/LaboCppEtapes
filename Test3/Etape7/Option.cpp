@@ -85,4 +85,8 @@ namespace carconfig
 	{
 		return code;
 	}
+	string Option::getLabel() const
+	{
+		return label;
+	}
 }

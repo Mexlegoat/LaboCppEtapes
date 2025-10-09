@@ -1,79 +1,64 @@
-#include "Model.h"
+#include "Option.h"
 namespace carconfig
 {
 	/***********************************************************************************************************************************************/
 	/************************************					CONSTRUCTEURS/DESTRUCTEURS						****************************************/
 	/***********************************************************************************************************************************************/
-	Model::Model()
+	Option::Option()
 	{
-		power = 0;
-		basePrice = 0;
-		name = nullptr;
-		engine = Petrol; 
-
+		code = "0000";
+		label = "Modele sans nom";
+		price = 0;
 	}
-	Model::Model(const char* nom, int puissance, Engine moteur, float prix)
+	Option::Option(const string c, const string l, float p)
 	{
-		power = puissance;
-		engine = moteur;
-		name = new char[strlen(nom) + 1];
-		strcpy(name, nom);
-		basePrice = prix;
+		code = c;
+		label = l;
+		price = p;
+	}
+	Option::Option(const Option &source)
+	{
+		price = source.price;
+		label = source.label;
+		code = source.code;
+		
 	}
 	/***********************************************************************************************************************************************/
 	/************************************					OPERATEURS						********************************************************/
 	/***********************************************************************************************************************************************/
-	istream& operator>>(istream& s, Model& m)
+	istream& operator>> (istream& s, Option& o)
 	{
-		int temp;
-	    char nom[100];
-
-	    cout << "Nom: ";
-	    s.getline(nom, 100);
-
-	    cout << "Engine: ";
-	    s >> temp;
-	    m.engine = static_cast<Engine>(temp);
-
-	    cout << "Puissance: ";
-	    s >> m.power;
-	    cout << "Prix: ";
-	    s >> m.basePrice;
-	    s.ignore();
-
-	    // libération de l'ancien name
-	    delete[] m.name;
-	    m.name = new char[strlen(nom) + 1];
-	    strcpy(m.name, nom);
+		string c, l;
+		float p;
+		cout << "Code: ";
+		s >> c;
+		s.ignore();
+		cout << "Nom: ";
+		getline(s, l);
+		cout << "Prix:";
+		s >> p;
+		o.code = c;
+		o.label = l;
+		o.price = p;
 		return s;
 	}
-	ostream& operator<<(ostream& s, const Model& m)
+	ostream& operator<<(ostream& s, const Option& o)
 	{
-		s << "Nom: " << m.name << endl;
-		s << "Puissance: " << m.power << " Prix de base :" << m.basePrice << endl;
-		s << "Moteur: ";
-		switch(m.engine)
-		{
-			case Petrol:
-				s << "Petrol";
-				break;
-			case Diesel:
-				s << "Diesel";
-				break;
-			case Electric:
-				s << "Electric";
-				break;
-			case Hybrid:
-				s << "Hybrid";
-				break;
-		}
-		s << endl;
+		s << "Code: " << o.code << endl << "Nom: " << o.label << endl << "Prix: " << o.price << "Euros";
 		return s;
 	}
 
-
-
-
+	Option Option::operator--()
+	{
+		(*this).price--;
+		return (*this);
+	}
+	Option Option::operator--(int)
+	{
+		Option temp(*this);
+		--(*this);
+		return temp;
+	}
 	/***********************************************************************************************************************************************/
 	/************************************					AUTRES FONCTIONS						************************************************/
 	/***********************************************************************************************************************************************/
@@ -81,39 +66,38 @@ namespace carconfig
 	/***********************************************************************************************************************************************/
 	/************************************					DISPLAY						************************************************************/
 	/***********************************************************************************************************************************************/
-	void Model::display() const
+	void Option::display()
 	{
-		cout << "Nom: " << name << endl;
-		cout << "Puissance: " << power << " Prix de base :" << basePrice << endl;
-		cout<< "Moteur: ";
-		switch(engine)
-		{
-			case Petrol:
-				cout << "Petrol";
-				break;
-			case Diesel:
-				cout << "Diesel";
-				break;
-			case Electric:
-				cout << "Electric";
-				break;
-			case Hybrid:
-				cout << "Hybrid";
-				break;
-		}
-		cout<< endl;
+		cout << "Code: " << code << endl << "Nom: " << label << endl << "Prix: " << price << endl;
 	}
 	/***********************************************************************************************************************************************/
 	/************************************					SETTERS						************************************************************/
 	/***********************************************************************************************************************************************/
-
-
-
+	void Option::setCode(const string c)
+	{
+		code = c;
+	}
+	void Option::setLabel(const string l)
+	{
+		label = l;
+	}
+	void Option::setPrice(float l)
+	{
+		price = l;
+	}
 	/***********************************************************************************************************************************************/
 	/************************************					GETTERS						************************************************************/
 	/***********************************************************************************************************************************************/
-	float Model::getBasePrice() const
+	float Option::getPrice() const
 	{
-		return basePrice;
+		return price;
+	}
+	string Option::getCode() const
+	{
+		return code;
+	}
+	string Option::getLabel() const
+	{
+		return label;
 	}
 }

@@ -128,6 +128,17 @@ namespace carconfig
 	{
 		return this->getPrice() == c.getPrice();
 	}
+	Option* Car::operator[](int i)
+	{
+		if (i >= 0 && i < 5)
+		{
+			return option[i];
+		}
+		else
+		{
+			throw(i);
+		}
+	}
 	/*************************************************			OPERATEUR << et >> *****************************************************************/
 
 	ostream& operator<<(ostream& s, const Car& c)
