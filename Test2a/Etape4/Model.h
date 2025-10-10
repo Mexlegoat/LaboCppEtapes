@@ -15,6 +15,19 @@ private:
 public:
   Model();
   Model(const char *n, int power, Engine e, float prix);
-  void display();
+  Model(const Model& source);
+  ~Model();
+
+  void setName(const char* n);
+  void setPower(const int p);
+  void setBasePrice(const float b);
+  void setEngine(const Engine e);
+
+  void display() const;
+  
+  int getPower() const;
+  const char* getName() const;
+  float getBasePrice() const;
+  Engine getEngine() const;
 };
 #endif

@@ -16,59 +16,59 @@ using namespace std;
 
 int main()
 {
-  // cout << endl << "(1) ***** Test constructeur par defaut + display ************************" << endl;
-  // {
-  //   Model model;
-  //   model.display();
-  // } // La presence des accolades assure que le destructeur de Model sera appele --> a tracer !
+  cout << endl << "(1) ***** Test constructeur par defaut + display ************************" << endl;
+  {
+    Model model;
+    model.display();
+  } // La presence des accolades assure que le destructeur de Model sera appele --> a tracer !
 
-  // cout << endl << "(2) ***** Test des setters et getters ***********************************" << endl;
-  // {
-  //   Model model;
-  //   model.setName("208 Active 1.5 BlueHDi 5P");
-  //   model.setPower(100);
-  //   model.setEngine(Engine::Diesel);
-  //   model.setBasePrice(21800.0f);
-  //   model.display();
-  //   cout << "Nom          = " << model.getName() << endl;
-  //   cout << "Puissance    = " << model.getPower() << " Ch" << endl;
-  //   cout << "Moteur       = " << model.getEngine() << endl;
-  //   cout << "Prix de base = " << model.getBasePrice() << " euros" << endl;
-  // }
+  cout << endl << "(2) ***** Test des setters et getters ***********************************" << endl;
+  {
+    Model model;
+    model.setName("208 Active 1.5 BlueHDi 5P");
+    model.setPower(100);
+    model.setEngine(Engine::Diesel);
+    model.setBasePrice(21800.0f);
+    model.display();
+    cout << "Nom          = " << model.getName() << endl;
+    cout << "Puissance    = " << model.getPower() << " Ch" << endl;
+    cout << "Moteur       = " << model.getEngine() << endl;
+    cout << "Prix de base = " << model.getBasePrice() << " euros" << endl;
+  }
 
-  // cout << endl << "(3) ***** Test du constructeur d'initialisation *************************" << endl;
-  // {
-  //   Model model("308 Allure 1.6 Hybrid 5P",150,Engine::Hybrid,38650.0f);
-  //   model.display();
-  // }
+  cout << endl << "(3) ***** Test du constructeur d'initialisation *************************" << endl;
+  {
+    Model model("308 Allure 1.6 Hybrid 5P",150,Engine::Hybrid,38650.0f);
+    model.display();
+  }
 
-  // cout << endl << "(4) ***** Test du constructeur de copie *********************************" << endl;
-  // {
-  //   Model model1("2008 GT 1.2 PureTech 130 Man.6",130,Engine::Petrol,31400.0f);
-  //   cout << "model1 (AVANT) :" << endl;
-  //   model1.display();
-  //   {   
-  //     Model model2(model1);
-  //     cout << "model2 :" << endl;
-  //     model2.display();
-  //     model2.setName("2008 GT 1.2 PureTech 130 EAT8");
-  //     model2.display();
-  //   } // de nouveau, les {} assurent que model2 sera detruit avant la suite
-  //   cout << "model1 (APRES) :" << endl;
-  //   model1.display();
-  // }
+  cout << endl << "(4) ***** Test du constructeur de copie *********************************" << endl;
+  {
+    Model model1("2008 GT 1.2 PureTech 130 Man.6",130,Engine::Petrol,31400.0f);
+    cout << "model1 (AVANT) :" << endl;
+    model1.display();
+    {   
+      Model model2(model1);
+      cout << "model2 :" << endl;
+      model2.display();
+      model2.setName("2008 GT 1.2 PureTech 130 EAT8");
+      model2.display();
+    } // de nouveau, les {} assurent que model2 sera detruit avant la suite
+    cout << "model1 (APRES) :" << endl;
+    model1.display();
+  }
 
-  // cout << endl << "(5) ***** Test d'allocation dynamique (constructeur par defaut) *********" << endl;
-  // {
-  //   Model *p = new Model();
-  //   p->setName("308 Allure 1.5 BlueHDi 5P");
-  //   p->setPower(130);
-  //   p->setEngine(Engine::Diesel);
-  //   p->setBasePrice(31650.0f);
-  //   p->display();
-  //   cout << "Le prix de base de ce model est : " << p->getBasePrice() << " euros" << endl;
-  //   delete p;
-  // }
+  cout << endl << "(5) ***** Test d'allocation dynamique (constructeur par defaut) *********" << endl;
+  {
+    Model *p = new Model();
+    p->setName("308 Allure 1.5 BlueHDi 5P");
+    p->setPower(130);
+    p->setEngine(Engine::Diesel);
+    p->setBasePrice(31650.0f);
+    p->display();
+    cout << "Le prix de base de ce model est : " << p->getBasePrice() << " euros" << endl;
+    delete p;
+  }
 
   cout << endl << "(6) ***** Test d'allocation dynamique (constructeur de copie) ***********" << endl;
   {

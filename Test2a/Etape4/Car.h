@@ -15,10 +15,10 @@ public:
 	Car();
 	Car(const string nom, Model m);
 	Car(const Car &source);
-	void display();
+	void display() const;
 	void setName(const string n);
 	void setModel(Model m);
-	Model getModel();
-	string getName();
+	Model getModel() const;
+	string getName() const;
 };
 #endif

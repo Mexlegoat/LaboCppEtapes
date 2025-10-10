@@ -6,21 +6,22 @@ using namespace std;
 Car::Car()
 {
 	name = "Modele sans nom";
-	model = Model();
+	Model m("default", 80, Engine::Petrol, 15000);
+	setModel(m);
 }
 Car::Car(const string nom, Model m)
 {
 	name = nom;
-	model = m;
+	setModel(m);
 }
 Car::Car(const Car &source)
 {
 	name = source.name;
-	model = source.model;
+	setModel(source.model);
 }
 // Autres fonctions
 // display
-void Car::display()
+void Car::display() const
 {
 	cout << name << endl;
 	model.display();
@@ -33,14 +34,17 @@ void Car::setName(const string copy)
 
 void Car::setModel(Model m)
 {
-	model = m;
+	model.setName(m.getName());
+	model.setPower(m.getPower());
+	model.setBasePrice(m.getBasePrice());
+	model.setEngine(m.getEngine());
 }
 // getters
-Model Car::getModel()
+Model Car::getModel() const
 {
 	return model;
 }
-string Car::getName()
+string Car::getName() const
 {
 	return name;
 }
