@@ -10,9 +10,9 @@ namespace carconfig
 	}
 	Option::Option(const string c, const string l, float p)
 	{
-		code = c;
-		label = l;
-		price = p;
+		setCode(c);
+		setLabel(l);
+		setPrice(p);
 	}
 	Option::Option(const Option &source)
 	{
