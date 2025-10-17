@@ -14,11 +14,11 @@ namespace carconfig
 	}
 	Model::Model(const char* nom, int puissance, Engine moteur, float prix)
 	{
-		power = puissance;
-		engine = moteur;
+		power = puissance;	// setPower(puissance);
+		engine = moteur;	// setEngine(moteur);
 		name = new char[strlen(nom) + 1];
-		strcpy(name, nom);
-		basePrice = prix;
+		strcpy(name, nom);	// setName(nom);
+		basePrice = prix;	// setPrice(prix);
 	}
 	/***********************************************************************************************************************************************/
 	/************************************					OPERATEURS						********************************************************/

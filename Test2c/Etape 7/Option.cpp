@@ -16,9 +16,9 @@ namespace carconfig
 	}
 	Option::Option(const Option &source)
 	{
-		price = source.price;
-		label = source.label;
-		code = source.code;
+		setCode(source.code);
+		setLabel(source.label);
+		setPrice(source.price);
 		
 	}
 	// Affichage
