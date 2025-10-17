@@ -17,8 +17,8 @@ namespace carconfig
 	}
 	Car::Car(const string nom, Model m)
 	{
-		name = nom;
-		model = m;
+		setName(nom);
+		setModel(m);
 
 		for (int i = 0; i < 5; i++)
 		{
@@ -27,8 +27,8 @@ namespace carconfig
 	}
 	Car::Car(const Car &source)
 	{
-		name = source.name;
-		model = source.model;
+		setName(source.name);
+		setModel(source.model);
 		for (int i = 0; i < 5; i++)
 		{
 			if (source.option[i] != nullptr)

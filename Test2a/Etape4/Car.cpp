@@ -11,12 +11,12 @@ Car::Car()
 }
 Car::Car(const string nom, Model m)
 {
-	name = nom;
+	setName(nom);
 	setModel(m);
 }
 Car::Car(const Car &source)
 {
-	name = source.name;
+	setName(source.name);
 	setModel(source.model);
 }
 // Autres fonctions
