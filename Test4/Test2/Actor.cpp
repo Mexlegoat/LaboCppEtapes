@@ -1,0 +1,29 @@
+#include "Actor.h"
+
+Actor::Actor():Person()
+{
+	id = 0;
+}
+Actor::Actor(string l, string f, int i):Person(l, f)
+{
+	this->setId(i);
+}
+
+Actor::Actor(const Actor& a):Person(a)
+{
+	setId(a.id);
+}
+
+void Actor::setId(int i)
+{
+	id = i;
+}
+
+
+
+int Actor::getId() const
+{
+	return id;
+}
+
+
