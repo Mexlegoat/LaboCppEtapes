@@ -23,14 +23,14 @@ string Client::getGsm() const
 
 string Client::tuple() const
 {
-	return "Nom: " + this->lastName + " Prenom : " + this->firstName + " ID : " + to_string(this->id);
+	return to_string(this->id) + ";" + this->lastName + ";" + this->firstName + ";" + this->gsm;
 }
 string Client::toString() const
 {
-	return lastName + " " + firstName + " id: " + to_string(id) + " gsm: " + gsm;
+	return "[C" + to_string(this->id) + "] " + lastName + " " + firstName;
 }
 ostream& operator<<(ostream& s, const Client& c)
 {
-	s << c.toString();
+	s << c.tuple();
 	return s;
 }

@@ -15,6 +15,7 @@ public:
 	void setId(int);
 	int getId() const;
 	// virtual
+	virtual ~Actor() = default;
 	virtual string tuple() const = 0;
 	virtual string toString() const = 0;
 };
