@@ -28,8 +28,8 @@ int main()
       case 2 : Essai2(); break;
       case 3 : Essai3(); break;
       case 4 : Essai4(); break;
-      // case 5 : Essai5(); break;
-      // case 6 : Essai6(); break;
+      case 5 : Essai5(); break;
+      case 6 : Essai6(); break;
       default : fini = true ; break;
     }
   }
@@ -259,65 +259,65 @@ void Essai4()
 }
 
 // /*********************************************************************************************/
-// // A FAIRE : normalement rien dans vos classes...
-// //           juste comprendre et tester le code ci-dessous
-// void Essai5()
-// {
-//   srand((unsigned)time(NULL));
+// A FAIRE : normalement rien dans vos classes...
+//           juste comprendre et tester le code ci-dessous
+void Essai5()
+{
+  srand((unsigned)time(NULL));
 
-//   cout << "----- 5.1 Allocation dynamique d'actors --------------------------------" << endl;
-//   Actor* actors[10];
+  cout << "----- 5.1 Allocation dynamique d'actors --------------------------------" << endl;
+  Actor* actors[10];
 
-//   for (int i=0 ; i<10 ; i++)   // Tracez vos constructeurs !!!
-//   {
-//     cout << endl << "actors[" << i << "] : ";
-//     int n = rand()%2;
-//     switch(n)
-//     {
-//       case 0 : actors[i] = new Client("Issier","Pol",41,"0485/12.12.23");
-//                cout << "Client" << endl;
-//                break;
+  for (int i=0 ; i<10 ; i++)   // Tracez vos constructeurs !!!
+  {
+    cout << endl << "actors[" << i << "] : ";
+    int n = rand()%2;
+    switch(n)
+    {
+      case 0 : actors[i] = new Client("Issier","Pol",41,"0485/12.12.23");
+               cout << "Client" << endl;
+               break;
 
-//       case 1 : actors[i] = new Employee("Coptere","Eli",7,"copteeli","Vendeur");
-//                cout << "Employee" << endl;
-//                break;
-//     }
-//   }
-//   cout << endl;
+      case 1 : actors[i] = new Employee("Coptere","Eli",7,"copteeli","Vendeur");
+               cout << "Employee" << endl;
+               break;
+    }
+  }
+  cout << endl;
 
-//   cout << "----- 5.2 Test du downcasting et dynamic-cast ------------------------------" << endl;
-//   for (int i=0 ; i<10 ; i++)
-//   {
-//     cout << "actors[" << i << "] ";
-//     Client* pClient = dynamic_cast<Client*>(actors[i]);
-//     if (pClient != NULL) 
-//     {
-//       cout << "est un Client" << endl;
-//       cout << "--> GSM = " << pClient->getGsm() << endl;
-//     }
-//     Employee* pEmployee = dynamic_cast<Employee*>(actors[i]);
-//     if (pEmployee != NULL) 
-//     {
-//       cout << "est un Employee" << endl;
-//       cout << "--> fonction = " << pEmployee->getRole() << endl;
-//     }
-//   }
-//   cout << endl;
+  cout << "----- 5.2 Test du downcasting et dynamic-cast ------------------------------" << endl;
+  for (int i=0 ; i<10 ; i++)
+  {
+    cout << "actors[" << i << "] ";
+    Client* pClient = dynamic_cast<Client*>(actors[i]);
+    if (pClient != NULL) 
+    {
+      cout << "est un Client" << endl;
+      cout << "--> GSM = " << pClient->getGsm() << endl;
+    }
+    Employee* pEmployee = dynamic_cast<Employee*>(actors[i]);
+    if (pEmployee != NULL) 
+    {
+      cout << "est un Employee" << endl;
+      cout << "--> fonction = " << pEmployee->getRole() << endl;
+    }
+  }
+  cout << endl;
 
-//   cout << "----- 5.3 Liberation memoire ----------------------------------------------------------------------------" << endl;
-//   for (int i=0 ; i<10 ; i++) delete actors[i];
-// }
+  cout << "----- 5.3 Liberation memoire ----------------------------------------------------------------------------" << endl;
+  for (int i=0 ; i<10 ; i++) delete actors[i];
+}
 
-// /******************************************************************************************/
-// // A FAIRE : Les deux variables statiques ADMINISTRATIVE et SELLER (const string) de la classe Employee
-// void Essai6()
-// {
-//   cout << "Les deux fonctions possibles pour un Employee sont :" << endl;
-//   cout << " - " << Employee::ADMINISTRATIVE << endl;
-//   cout << " - " << Employee::SELLER << endl << endl;
+/******************************************************************************************/
+// A FAIRE : Les deux variables statiques ADMINISTRATIVE et SELLER (const string) de la classe Employee
+void Essai6()
+{
+  cout << "Les deux fonctions possibles pour un Employee sont :" << endl;
+  cout << " - " << Employee::ADMINISTRATIVE << endl;
+  cout << " - " << Employee::SELLER << endl << endl;
 
-//   Employee e("Dugenou","Jean-Paul",2,"dugejean",Employee::ADMINISTRATIVE);
-//   cout << e << endl;
-//   e.setRole(Employee::SELLER);
-//   cout << e << endl;
-// }
+  Employee e("Dugenou","Jean-Paul",2,"dugejean",Employee::ADMINISTRATIVE);
+  cout << e << endl;
+  e.setRole(Employee::SELLER);
+  cout << e << endl;
+}

@@ -86,7 +86,7 @@ string Employee::toString() const
 /***************************************************************************************************************************/
 ostream& operator<<(ostream& s, const Employee& e)
 {
-	s << "Nom: " << e.lastName << endl << "Prenom: " << e.firstName << endl << "ID: " << e.id << endl << "Login: " << e.login << "Mot de passe: " << e.password
+	s << "Nom: " << e.lastName << endl << "Prenom: " << e.firstName << endl << "ID: " << e.id << endl << "Login: " << e.login << endl
 	<< "Fonction: " << e.role;
 	return s;
 }
