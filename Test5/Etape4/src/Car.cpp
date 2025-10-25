@@ -130,14 +130,12 @@ namespace carconfig
 	}
 	Option* Car::operator[](int i)
 	{
-		if (i >= 0 && i < 5)
-		{
-			return option[i];
-		}
-		else
-		{
-			return NULL;
-		}
+	    if (i <= 0 || i > 6)
+	    {
+	        throw OptionException("Erreur : indice d'option invalide (doit être entre 1 et 6) !");
+	    }
+
+	    return option[i];
 	}
 	/*************************************************			OPERATEUR << et >> *****************************************************************/
 
@@ -199,13 +197,21 @@ namespace carconfig
 		int i;
 		for (i = 0; i < 5; i++)
 		{
-			if (option[i] == nullptr)
+			if (option[i] != nullptr)
+			{
+				if (option[i]->getCode() == o.getCode())
+				{
+					throw OptionException("L'option existe deja dans la voiture");
+				}
+			}
+
+			else if (option[i] == nullptr)
 			{
 				option[i] = new Option(o);
 				return;
 			}
 		}
-		cout << "Impossible d'ajouter plus que 5 options" << endl;
+		throw OptionException("Erreur : nombre maximal d'options atteint !");
 	}
 	
 	/***********************************************************************************************************************************************/
@@ -242,14 +248,14 @@ namespace carconfig
 			if (option[i] != nullptr && option[i]->getCode() == code)
 			{
 				delete option[i];
-				option[i] = nullptr;
 				isTrue = true;
+				option[i] = nullptr;
 				return;
 			}
 		}
 		if (!isTrue)
 		{
-			cout << "Option non trouvee" << endl;
+			throw OptionException("L'option que vous voulez supprimer n'existe pas");
 		}
 	}
 }
