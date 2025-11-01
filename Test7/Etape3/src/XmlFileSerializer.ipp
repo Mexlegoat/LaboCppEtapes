@@ -88,7 +88,7 @@ T XmlFileSerializer<T>::read()
 	string line;
 	streampos pos = file.tellg();
 	string end = "</" + getCollectionName() + ">";
-	file >> line;
+	getline(file, line);
 	if (line == end)
 	{
 		throw(XmlFileSerializerException(XmlFileSerializerException::END_OF_FILE, "Lecture de la fin du fichier!"));
@@ -101,6 +101,9 @@ T XmlFileSerializer<T>::read()
 template <typename T>
 XmlFileSerializer<T>::~XmlFileSerializer()
 {
-	file << "</" << getCollectionName() << ">" << endl;
+	if (isWritable())
+	{
+		file << "</" << getCollectionName() << ">" << endl;
+	}
 	file.close();
 }

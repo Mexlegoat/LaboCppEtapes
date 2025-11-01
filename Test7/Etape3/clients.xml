@@ -14,7 +14,6 @@ Jean-Marc
 0476.12.45.98
 </gsm>
 </Client>
-
 <Client>
 <lastName>
 Quettier
@@ -29,7 +28,6 @@ Patrick
 0479.18.35.08
 </gsm>
 </Client>
-
 <Client>
 <lastName>
 Leonard
@@ -44,5 +42,4 @@ Annne
 0495.11.22.88
 </gsm>
 </Client>
-
 </clients>

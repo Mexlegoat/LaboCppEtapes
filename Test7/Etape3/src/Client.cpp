@@ -55,7 +55,7 @@ ostream& operator<<(ostream& s, const Client& c)
 	s << "<gsm>" << endl;
 	s << c.gsm << endl;
 	s << "</gsm>" << endl;
-	s << "</Client>" << endl;
+	s << "</Client>";
 	return s;
 }
 istream& operator>>(istream& s, Client& c)
@@ -71,7 +71,8 @@ istream& operator>>(istream& s, Client& c)
 	c.setFirstName(line);
 	getline(s, line); // /firstName
 	getline(s, line); // id
-	s >> c.id;
+	getline(s, line); // id
+	c.setId(stoi(line));
 	getline(s, line); // /id
 	getline(s, line); // gsm
 	getline(s, line); // variable
