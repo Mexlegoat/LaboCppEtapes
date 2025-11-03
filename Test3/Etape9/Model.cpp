@@ -106,7 +106,23 @@ namespace carconfig
 	/***********************************************************************************************************************************************/
 	/************************************					SETTERS						************************************************************/
 	/***********************************************************************************************************************************************/
-
+	void Model::setName(const char* modelName)
+	{
+		name = new char [strlen(modelName) + 1];
+		strcpy(name, modelName);
+	}
+	void Model::setPower(int modelPower)
+	{
+		power = modelPower;
+	}
+	void Model::setEngine(const Engine modelEngine)
+	{
+		engine = modelEngine;
+	}
+	void Model::setBasePrice(float modelBasePrice)
+	{
+		basePrice = modelBasePrice;
+	}
 
 
 	/***********************************************************************************************************************************************/
@@ -115,5 +131,17 @@ namespace carconfig
 	float Model::getBasePrice() const
 	{
 		return basePrice;
+	}
+	const char* Model::getName() const
+	{
+		return name;
+	}
+	int Model::getPower() const
+	{
+		return power;
+	}
+	Engine Model::getEngine() const
+	{
+		return engine;
 	}
 }

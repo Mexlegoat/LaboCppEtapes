@@ -6,8 +6,10 @@ using namespace std;
 Car::Car()
 {
 	name = "Modele sans nom";
-	Model m("default", 80, Engine::Petrol, 15000);
-	setModel(m);
+	model.setName("pas de nom");
+	model.setPower(0);
+	model.setEngine(Engine::Petrol);
+	model.setBasePrice(0);
 }
 Car::Car(const string nom, Model m)
 {

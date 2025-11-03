@@ -20,6 +20,10 @@ namespace carconfig
 		name = nullptr;
 		setName(nom);
 	}
+	Model::~Model()
+	{
+		if (name != nullptr) delete name;
+	}
 	/***********************************************************************************************************************************************/
 	/************************************					OPERATEURS						********************************************************/
 	/***********************************************************************************************************************************************/
@@ -177,5 +181,17 @@ namespace carconfig
 	float Model::getBasePrice() const
 	{
 		return basePrice;
+	}
+	const char* Model::getName() const
+	{
+		return name;
+	}
+	int Model::getPower() const
+	{
+		return power;
+	}
+	Engine Model::getEngine() const
+	{
+		return engine;
 	}
 }

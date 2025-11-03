@@ -6,7 +6,10 @@ namespace carconfig
 	Car::Car()
 	{
 		name = "Modele sans nom";
-		model = Model();
+		model.setName("pas de nom");
+		model.setPower(0);
+		model.setEngine(Engine::Petrol);
+		model.setBasePrice(0);
 		for (int i = 0; i < 5; i++)
 		{
 			option[i] = nullptr;
@@ -79,7 +82,7 @@ namespace carconfig
 		name = copy;
 	}
 
-	void Car::setModel(Model m)
+	void Car::setModel(const Model& m)
 	{
 		model = m;
 	}
@@ -124,13 +127,17 @@ namespace carconfig
 		int i;
 		for (i = 0; i < 5; i++)
 		{
-			if (option[i]->getCode() == code)
+			if (option[i] != nullptr)
 			{
-				delete option[i];
-				option[i] = nullptr;
+				if (option[i]->getCode() == code)
+				{
+					delete option[i];
+					option[i] = nullptr;
 
-				return;
+					return;
+				}
 			}
+
 		}
 		if (option[i]->getCode() != code)
 		{

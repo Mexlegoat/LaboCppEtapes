@@ -50,9 +50,6 @@ $(OBJ)/Client.o: $(SRC)/Client.cpp $(INC)/Client.h $(INC)/Actor.h
 $(OBJ)/PasswordException.o: $(SRC)/PasswordException.cpp $(INC)/Exception.h $(INC)/PasswordException.h
 	$(COMP) -c $(SRC)/PasswordException.cpp -o $(OBJ)/PasswordException.o
 
-$(OBJ)/XmlFileSerializer.o: $(SRC)/XmlFileSerializer.ipp $(INC)/XmlFileSerializer.hpp
-	$(COMP) -c $(SRC)/XmlFileSerializer.ipp -o $(OBJ)/XmlFileSerializer.o
-
 $(OBJ)/XmlFileSerializerException.o: $(SRC)/XmlFileSerializerException.cpp $(INC)/Exception.h $(INC)/XmlFileSerializerException.h
 	$(COMP) -c $(SRC)/XmlFileSerializerException.cpp -o $(OBJ)/XmlFileSerializerException.o
 

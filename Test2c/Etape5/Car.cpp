@@ -5,7 +5,10 @@
 Car::Car()
 {
 	name = "Modele sans nom";
-	model = Model();
+	model.setName("pas de nom");
+	model.setPower(0);
+	model.setEngine(Engine::Petrol);
+	model.setBasePrice(0);
 	for (int i = 0; i < 5; i++)
 	{
 		option[i] = nullptr;

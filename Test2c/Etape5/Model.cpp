@@ -22,6 +22,23 @@ Model::Model(const char* nom, int puissance, Engine moteur, float prix)
 
 // Autres Fonctions
 // setters
+void Model::setName(const char* modelName)
+	{
+		name = new char [strlen(modelName) + 1];
+		strcpy(name, modelName);
+	}
+	void Model::setPower(int modelPower)
+	{
+		power = modelPower;
+	}
+	void Model::setEngine(Engine modelEngine)
+	{
+		engine = modelEngine;
+	}
+	void Model::setBasePrice(float modelBasePrice)
+	{
+		basePrice = modelBasePrice;
+	}
 // display
 void Model::display()
 {

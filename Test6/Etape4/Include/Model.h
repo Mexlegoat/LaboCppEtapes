@@ -29,6 +29,10 @@ namespace carconfig
     string enginetoString(Engine e) const;
     string toString() const;
     float getBasePrice() const;
+    const char* getName() const;
+    int getPower() const;
+    Engine getEngine() const;
+
   };
 }
 

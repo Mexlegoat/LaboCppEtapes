@@ -178,4 +178,16 @@ namespace carconfig
 	{
 		return basePrice;
 	}
+	const char* Model::getName() const
+	{
+		return name;
+	}
+	int Model::getPower() const
+	{
+		return power;
+	}
+	Engine Model::getEngine() const
+	{
+		return engine;
+	}
 }

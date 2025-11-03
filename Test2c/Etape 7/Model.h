@@ -18,6 +18,12 @@ namespace carconfig
     Model();
     Model(const char *n, int power, Engine e, float prix);
     void display();
+
+    void setName(const char* n);
+    void setPower(const int p);
+    void setBasePrice(const float b);
+    void setEngine(const Engine e);
+    
     float getBasePrice();
   };
 }

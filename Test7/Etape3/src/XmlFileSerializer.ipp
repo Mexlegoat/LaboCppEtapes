@@ -70,7 +70,7 @@ bool XmlFileSerializer<T>::isWritable()
 }
 
 template <typename T>
-void XmlFileSerializer<T>::write(const T &var)
+void XmlFileSerializer<T>::write(const T& var)
 {
 	if (isReadable())
 	{
@@ -88,7 +88,7 @@ T XmlFileSerializer<T>::read()
 	string line;
 	streampos pos = file.tellg();
 	string end = "</" + getCollectionName() + ">";
-	getline(file, line);
+	file >> line;
 	if (line == end)
 	{
 		throw(XmlFileSerializerException(XmlFileSerializerException::END_OF_FILE, "Lecture de la fin du fichier!"));

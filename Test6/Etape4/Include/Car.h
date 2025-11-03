@@ -17,7 +17,7 @@ namespace carconfig
 
 	public:
 		Car();
-		Car(const string n, Model m);
+		Car(const string n,const Model& m);
 		Car(const Car &source);
 		Car operator+(const Option& o) const;
 		Car operator-(const Option& o) const;
@@ -34,10 +34,10 @@ namespace carconfig
 		void display();
 		void addOption(const Option& option);
 		void setName(const string n);
-		void setModel(Model m);
+		void setModel(const Model& m);
 		void removeOption(string);
-		Model getModel();
-		string getName();
+		Model getModel() const;
+		string getName() const;
 		float getPrice() const;
 	};
 }

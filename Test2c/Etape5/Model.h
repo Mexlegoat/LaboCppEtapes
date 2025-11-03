@@ -16,6 +16,10 @@ public:
   Model();
   Model(const char *n, int power, Engine e, float prix);
   void display();
+  void setName(const char* n);
+  void setPower(int);
+  void setBasePrice(float);
+  void setEngine(Engine);
   float getBasePrice();
 };
 #endif

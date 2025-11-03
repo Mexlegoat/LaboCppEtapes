@@ -22,7 +22,7 @@ namespace carconfig
 		void display();
 		void addOption(const Option& option);
 		void setName(const string n);
-		void setModel(Model m);
+		void setModel(const Model& m);
 		void removeOption(string);
 		Model getModel();
 		string getName();

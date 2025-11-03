@@ -9,13 +9,16 @@ namespace carconfig
 	Car::Car()
 	{
 		name = "Modele sans nom";
-		model = Model();
+		model.setName("pas de nom");
+		model.setEngine(Engine::Petrol);
+		model.setPower(0);
+		model.setBasePrice(0);
 		for (int i = 0; i < 5; i++)
 		{
 			option[i] = nullptr;
 		}
 	}
-	Car::Car(const string nom, Model m)
+	Car::Car(const string nom,const Model& m)
 	{
 		setName(nom);
 		setModel(m);
@@ -221,11 +224,13 @@ namespace carconfig
 		name = copy;
 	}
 
-	void Car::setModel(Model m)
+	void Car::setModel(const Model& m)
 	{
-		model = m;
-	}
-	void Car::addOption(const Option& o)
+		model.setName(m.getName());
+		model.setEngine(m.getEngine());
+		model.setPower(m.getPower());
+		model.setBasePrice(m.getBasePrice());
+	}	void Car::addOption(const Option& o)
 	{
 		int i;
 		for (i = 0; i < 5; i++)
@@ -250,11 +255,11 @@ namespace carconfig
 	/***********************************************************************************************************************************************/
 	/************************************					GETTERS						************************************************************/
 	/***********************************************************************************************************************************************/
-	Model Car::getModel()
+	Model Car::getModel() const
 	{
 		return model;
 	}
-	string Car::getName()
+	string Car::getName() const
 	{
 		return name;
 	}
