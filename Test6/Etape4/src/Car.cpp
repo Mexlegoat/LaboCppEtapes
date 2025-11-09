@@ -79,7 +79,7 @@ namespace carconfig
 		}
 
 		name = source.name;
-		model = source.model;
+		setModel(source.model);
 		for (i = 0; i < 5; i++)
 		{
 			if (source.option[i] != nullptr)
