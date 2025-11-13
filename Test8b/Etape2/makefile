@@ -7,6 +7,7 @@ COMP = g++ -Wall -D DEBUG -I $(INC) -I $(SRC) -I $(OBJ)
 
 
 all : $(BIN) $(OBJ) $(BIN)/Test8b
+Test8a : $(BIN) $(OBJ) $(BIN)/Test8a
 
 $(BIN):
 	mkdir -p $(BIN)
@@ -16,12 +17,17 @@ $(OBJ):
 	mkdir -p $(OBJ)
 	@echo "Creation fichier obj"
 
+$(BIN)/Test8a: $(OBJ)/Test8a.o $(OBJ)/OptionException.o $(OBJ)/Option.o $(OBJ)/Exception.o $(OBJ)/Car.o $(OBJ)/Model.o $(OBJ)/PasswordException.o $(OBJ)/Client.o $(OBJ)/Person.o $(OBJ)/Actor.o $(OBJ)/XmlFileSerializerException.o $(OBJ)/Garage.o $(OBJ)/Employee.o
+	$(COMP) $(OBJ)/Test8a.o $(OBJ)/OptionException.o $(OBJ)/Option.o $(OBJ)/Exception.o $(OBJ)/Car.o $(OBJ)/Model.o $(OBJ)/PasswordException.o $(OBJ)/Client.o $(OBJ)/Person.o $(OBJ)/Actor.o $(OBJ)/XmlFileSerializerException.o $(OBJ)/Garage.o $(OBJ)/Employee.o -o $(BIN)/Test8a
 
 $(BIN)/Test8b: $(OBJ)/Test8b.o $(OBJ)/OptionException.o $(OBJ)/Option.o $(OBJ)/Exception.o $(OBJ)/Car.o $(OBJ)/Model.o $(OBJ)/PasswordException.o $(OBJ)/Client.o $(OBJ)/Person.o $(OBJ)/Actor.o $(OBJ)/XmlFileSerializerException.o $(OBJ)/Garage.o $(OBJ)/Employee.o
 	$(COMP) $(OBJ)/Test8b.o $(OBJ)/OptionException.o $(OBJ)/Option.o $(OBJ)/Exception.o $(OBJ)/Car.o $(OBJ)/Model.o $(OBJ)/PasswordException.o $(OBJ)/Client.o $(OBJ)/Person.o $(OBJ)/Actor.o $(OBJ)/XmlFileSerializerException.o $(OBJ)/Garage.o $(OBJ)/Employee.o -o $(BIN)/Test8b
 
 $(OBJ)/Test8b.o: $(SRC)/Test8b.cpp $(INC)/Option.h $(INC)/Car.h $(INC)/Model.h $(INC)/Client.h $(INC)/XmlFileSerializer.hpp $(INC)/Garage.h
 	$(COMP) -c $(SRC)/Test8b.cpp -o $(OBJ)/Test8b.o
+
+$(OBJ)/Test8a.o: $(SRC)/Test8a.cpp $(INC)/Option.h $(INC)/Car.h $(INC)/Model.h $(INC)/Client.h $(INC)/XmlFileSerializer.hpp $(INC)/Garage.h
+	$(COMP) -c $(SRC)/Test8a.cpp -o $(OBJ)/Test8a.o
 
 $(OBJ)/Option.o: $(SRC)/Option.cpp $(INC)/Option.h $(INC)/OptionException.h
 	$(COMP) -c $(SRC)/Option.cpp -o $(OBJ)/Option.o
