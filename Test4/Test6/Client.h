@@ -10,6 +10,7 @@ private:
 	string gsm;
 public:
 	Client();
+	~Client();
 	Client(string l, string f, int i, string g);
 	Client(const Client& c);
 	void setGsm(string g);

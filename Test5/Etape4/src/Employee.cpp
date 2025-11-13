@@ -30,7 +30,7 @@ Employee::Employee(const Employee& e):Actor(e)
 /***************************************************************************************************************************/
 Employee::~Employee()
 {
-	delete password;
+	if (password != nullptr) delete password;
 }
 
 /***************************************************************************************************************************/
@@ -38,7 +38,7 @@ Employee::~Employee()
 /***************************************************************************************************************************/
 void Employee::setPassword(const string& pw)
 {
-    delete password;
+    if (password != nullptr) delete password;
     if (pw.length() < 6)
     {
     	throw PasswordException(PasswordException::INVALID_LENGTH, "Le mot de passe doit avoir au minimum 6 lettres");
@@ -124,7 +124,7 @@ Employee& Employee::operator=(const Employee& e)
         this->login = e.login;
         this->role = e.role;
         
-        delete this->password;
+        if (this->password != nullptr) delete this->password;
         if (e.password != nullptr)
             this->password = new string(*e.password);
         else

@@ -30,8 +30,8 @@ Employee::Employee(const Employee& e):Actor(e)
 /***************************************************************************************************************************/
 Employee::~Employee()
 {
-	cout << "Destructeur ";
-	delete password;
+	cout << "Destructeur [Employee]" << endl;
+	if (password != nullptr) delete password;
 }
 
 /***************************************************************************************************************************/
@@ -39,7 +39,7 @@ Employee::~Employee()
 /***************************************************************************************************************************/
 void Employee::setPassword(const string& pw)
 {
-    delete password;
+    if (password != nullptr) delete password;
     password = new string(pw);
 }
 void Employee::setRole(const string r)
@@ -74,7 +74,7 @@ string Employee::tuple() const
 }
 string Employee::toString() const
 {
-	if (role == "Administratif")
+	if (role == Employee::ADMINISTRATIVE)
 	{
 		return "[A" + to_string(this->id) + "] " + lastName + " " + firstName;
 	}

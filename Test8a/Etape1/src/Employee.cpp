@@ -99,7 +99,7 @@ Employee& Employee::operator=(const Employee& e)
         this->login = e.login;
         this->role = e.role;
         
-        delete this->password;
+        if (this->password != nullptr) delete this->password;
         if (e.password != nullptr)
             this->password = new string(*e.password);
         else

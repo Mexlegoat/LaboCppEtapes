@@ -11,6 +11,7 @@ protected:
 public:
 	// constructeurs
 	Person();
+	~Person();
 	Person(const string l,const string f);
 	Person(const Person& p);
 	// setters

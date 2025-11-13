@@ -30,7 +30,7 @@ Employee::Employee(const Employee& e):Actor(e)
 /***************************************************************************************************************************/
 Employee::~Employee()
 {
-	delete password;
+	if (password != nullptr) delete password;
 }
 
 /***************************************************************************************************************************/
@@ -38,7 +38,7 @@ Employee::~Employee()
 /***************************************************************************************************************************/
 void Employee::setPassword(const string& pw)
 {
-    delete password;
+    if (password != nullptr) delete password;
     password = new string(pw);
 }
 void Employee::setRole(const string r)
@@ -102,7 +102,7 @@ Employee& Employee::operator=(const Employee& e)
         this->login = e.login;
         this->role = e.role;
         
-        delete this->password;
+        if (this->password != nullptr) delete this->password;
         if (e.password != nullptr)
             this->password = new string(*e.password);
         else
