@@ -35,7 +35,7 @@ namespace carconfig
 
     getline(s, line); // <name>
     getline(s, line); // variable
-    delete[] m.name;
+    if (m.name != nullptr) delete[] m.name;
     m.name = new char[line.length() + 1];
     strcpy(m.name, line.c_str());
     getline(s, line); // </name>
