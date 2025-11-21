@@ -1,3 +1,0 @@
-/home/student/Bureau/LaboCppEtapes/Test9/Etape1/build/CMakeFiles/rebuild_cache.dir
-/home/student/Bureau/LaboCppEtapes/Test9/Etape1/build/CMakeFiles/ApplicGarage.dir
-/home/student/Bureau/LaboCppEtapes/Test9/Etape1/build/CMakeFiles/edit_cache.dir
