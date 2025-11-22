@@ -65,7 +65,10 @@ namespace carconfig
     getline(s, line); // variable
     m.basePrice = stof(line);
     getline(s, line); // </basePrice>
-
+    getline(s, line); // <image>
+    getline(s, line); // variable
+    m.setImage(line);
+    getline(s, line); // </image>
     getline(s, line); // </Model>
 
     return s;
@@ -85,6 +88,9 @@ namespace carconfig
 		s << "<basePrice>" << endl;
 		s << m.basePrice << endl;
 		s << "</basePrice>" << endl;
+		s << "<image>" << endl;
+		s << m.image << endl;
+		s << "</image>" << endl;
 		s << "</Model>" << endl;
 		return s;
 	}
@@ -95,6 +101,16 @@ namespace carconfig
 	/***********************************************************************************************************************************************/
 	/************************************					AUTRES FONCTIONS						************************************************/
 	/***********************************************************************************************************************************************/
+	Model& Model::operator=(const Model& m)
+	{
+		setPower(m.power);
+		setEngine(m.engine);
+		setBasePrice(m.basePrice);
+		name = nullptr;
+		setName(m.name);
+		setImage(m.image);
+		return *this;
+	}
 
 	/***********************************************************************************************************************************************/
 	/************************************					DISPLAY						************************************************************/

@@ -23,6 +23,8 @@ namespace carconfig
     friend istream& operator>>(istream& s, Model& m);
     friend ostream& operator<<(ostream& s, const Model& m);
 
+    Model& operator=(const Model&);
+
     void display() const;
 
     void setPower(int);

@@ -872,6 +872,30 @@ void ApplicGarageWindow::on_pushButtonReduction_clicked()
 {
     // TO DO (étape 9)
     cout << ">>> Clic sur bouton Reduction <<<" << endl;
+    int indice = getIndexOptionSelectionTable();
+    float price;
+    Option op;
+    if (indice == -1)
+    {
+        dialogError("Erreur Selection", "Vous avez choisis une option vide");
+        return;
+    }
+    else
+    {
+        try
+        {
+            op.setPrice(c[indice]->getPrice()); // On récupère le prix
+            op--; // on décrémente
+            c[indice]->setPrice(op.getPrice()); // on remet le prix dans car comme ça la prochaine fois on aura ce prix la et pas l'autre
+        }
+        catch(OptionException& o)
+        {
+            dialogError("Erreur Prix", o.getMessage().c_str());
+        }
+        price = c.getPrice();
+        setTableOption(indice, c[indice]->getCode(), c[indice]->getLabel(), c[indice]->getPrice());
+        setPrice(price);
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -879,6 +903,17 @@ void ApplicGarageWindow::on_pushButtonSaveProject_clicked()
 {
     // TO DO (étape 9)
     cout << ">>> Clic sur bouton SaveProject <<<" << endl;
+    string projectName = getCurrentProjectName();
+    if (projectName == "")
+    {
+        dialogError("Erreur Saisie", "Le nom du projet est vide");
+        return;
+    }
+    else
+    {
+        c.setName(projectName);
+        c.save();
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -886,6 +921,27 @@ void ApplicGarageWindow::on_pushButtonOpenProject_clicked()
 {
     // TO DO (étape 9)
     cout << ">>> Clic sur bouton OpenProject <<<" << endl;
+    string projectName = getCurrentProjectName();
+    c.load(projectName);
+
+    // Model
+    Model m = c.getModel();
+    setModel(string(m.getName()), m.getPower(), m.getEngine(), m.getBasePrice(), m.getImage());
+    // Option
+    for (int i = 0; i < 5; i++)
+    {
+        Option* o = c[i];
+        if (o != nullptr)
+        {
+            setTableOption(i, o->getCode(), o->getLabel(), o->getPrice());
+        }
+        else
+        {
+            setTableOption(i);
+        }
+    }
+    setPrice(c.getPrice());
+    setCurrentProjectName(projectName);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -893,6 +949,17 @@ void ApplicGarageWindow::on_pushButtonNewProject_clicked()
 {
     // TO DO (étape 9)
     cout << ">>> Clic sur bouton NewProject <<<" << endl;
+    Garage::getInstance().resetCurrentProject();
+    c = Garage::getInstance().getCurrentProject();
+    clearTableOption();
+    clearTableClients();
+    clearTableContracts();
+    clearTableEmployees();
+    clearComboBoxAvailableModels();
+    clearComboBoxAvailableOptions();
+    setPrice(0);
+    setModel("---", 0, 0, float(0), "---");
+    setCurrentProjectName("---");
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

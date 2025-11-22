@@ -225,10 +225,7 @@ namespace carconfig
 
 	void Car::setModel(const Model& m)
 	{
-		model.setName(m.getName());
-		model.setEngine(m.getEngine());
-		model.setPower(m.getPower());
-		model.setBasePrice(m.getBasePrice());
+		model = m; // utilisation operateur = pour pouvoir copier l'image aussi
 	}	
 	void Car::addOption(const Option& o)
 	{
@@ -297,5 +294,38 @@ namespace carconfig
 		{
 			throw OptionException("L'option que vous voulez supprimer n'existe pas");
 		}
+	}
+	/***********************************************************************************************************************************************/
+	/************************************					XML						****************************************************************/
+	/***********************************************************************************************************************************************/
+	void Car::save()
+	{
+		fstream fd;
+		string fn = name + ".xml";
+		fd.open(fn, ios::out);
+		if (!fd.is_open())
+		{
+			cout << "Fichier introuvable";
+			return;
+		}
+		fd << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		fd << *this;
+		fd.close();
+	}
+	void Car::load(string projectName)
+	{
+		fstream fd;
+		string fn = projectName + ".xml";
+		fd.open(fn, ios::in);
+		if(!fd.is_open())
+		{
+			cout << "Fichier introuvable";
+			return;
+		}
+		cout << "Ouverture reussi" << endl;
+		string line;
+		getline(fd, line);
+		fd >> *this;
+		fd.close();
 	}
 }

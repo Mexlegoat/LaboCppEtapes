@@ -2,6 +2,8 @@
 #define CAR_H
 #include <iostream>
 #include <string>
+#include <unistd.h>
+#include <fstream>
 #include "Model.h"
 #include "Option.h"
 #include "OptionException.h"
@@ -14,6 +16,7 @@ namespace carconfig
 		string name;
 		Model model;
 		Option* option[5];
+
 	public:
 		Car();
 		Car(const string n,const Model& m);
@@ -38,6 +41,10 @@ namespace carconfig
 		Model getModel() const;
 		string getName() const;
 		float getPrice() const;
+
+		// Etape 9
+		void save();
+		void load(string pn);
 	};
 }
 #endif
