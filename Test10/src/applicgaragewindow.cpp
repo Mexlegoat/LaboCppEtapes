@@ -8,8 +8,11 @@
 #include "Garage.h"
 
 #define IMAGES_DIR "../../images/"
+#define CSV "../../CSVs/"
+using namespace carconfig;
 
-Car c;
+auto &g = Garage::getInstance();
+Car c = g.getCurrentProject();
 ApplicGarageWindow::ApplicGarageWindow(QWidget *parent) : QMainWindow(parent),ui(new Ui::ApplicGarageWindow)
 {
     ui->setupUi(this);
@@ -73,8 +76,37 @@ ApplicGarageWindow::ApplicGarageWindow(QWidget *parent) : QMainWindow(parent),ui
     ui->tableWidgetContracts->horizontalHeader()->setStyleSheet("background-color: lightyellow");
 
     // Importation des modeles (étape 10)
+    auto &garage = Garage::getInstance();
+
+    garage.importModelsFromCsv(CSV);
+    garage.importOptionsFromCsv(CSV);
+    int i = 0;
+
+    do
+    {
+        Model m = garage.getModel(i);
+        i++;
+        if (m.getImage().empty())
+        {
+            break;
+        }
+        addAvailableModel(m.getName(), m.getBasePrice());
+    } while(true);
 
     // Importation des options (étape 10)
+    clearTableOption();
+    i = 0;
+
+    do
+    {
+        Option o = garage.getOption(i);
+        i++;
+        if (o.getLabel().empty())
+        {
+            break;
+        }
+        addAvailableOption(o.getLabel(), o.getPrice());
+    } while(true);
 
     // Lecture de config.dat, des employees, clients et contrats (étape 12)
 
@@ -891,6 +923,7 @@ void ApplicGarageWindow::on_pushButtonReduction_clicked()
     {
         if (c[indice] != nullptr)
         {
+            op.setLabel(c[indice]->getLabel());
             try
             {
                 op.setPrice(c[indice]->getPrice()); // On récupère le prix

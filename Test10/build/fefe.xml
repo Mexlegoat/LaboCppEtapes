@@ -1,46 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Car>
 <name>
-ProjetIssam
+fefe
 </name>
 <Model>
 <name>
-Peugeot 208
+208 Active 1.2 PureTech 75
 </name>
 <power>
-200
+75
 </power>
 <engine>
-1
+0
 </engine>
 <basePrice>
-2000
+18050
 </basePrice>
 <image>
-208
+208.jpg
 </image>
 </Model>
 <options>
 <Option>
 <code>
-EMM0
+0MM0
 </code>
 <label>
-Pente
+Peinture metallisee
 </label>
 <price>
-350
-</price>
-</Option>
-<Option>
-<code>
-ZH45
-</code>
-<label>
-Toile
-</label>
-<price>
-0
+400
 </price>
 </Option>
 </options>

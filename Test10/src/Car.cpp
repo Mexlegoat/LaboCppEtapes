@@ -1,0 +1,331 @@
+#include <cstring>
+#include "Car.h"
+namespace carconfig
+{
+	/***********************************************************************************************************************************************/
+	/************************************					CONSTRUCTEURS/DESTRUCTEURS						****************************************/
+	/***********************************************************************************************************************************************/
+	Car::Car()
+	{
+		name = "Modele sans nom";
+		model.setName("pas de nom");
+		model.setEngine(Engine::Petrol);
+		model.setPower(0);
+		model.setBasePrice(0);
+		for (int i = 0; i < 5; i++)
+		{
+			option[i] = nullptr;
+		}
+	}
+	Car::Car(const string nom,const Model& m)
+	{
+		setName(nom);
+		setModel(m);
+
+		for (int i = 0; i < 5; i++)
+		{
+			option[i] = nullptr;
+		}
+	}
+	Car::Car(const Car &source)
+	{
+		setName(source.name);
+		setModel(source.model);
+		for (int i = 0; i < 5; i++)
+		{
+			if (source.option[i] != nullptr)
+			{
+				option[i] = new Option(*source.option[i]);
+			}
+			else
+			{
+				option[i] = nullptr;
+			}
+		}
+	}
+	Car::~Car()
+	{
+		cout << "[Car] Destructeur d'option" << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				delete option[i];
+				option[i] = nullptr;
+
+			}
+		}
+	}
+	
+	/***********************************************************************************************************************************************/
+	/************************************					OPERATEURS						********************************************************/
+	/***********************************************************************************************************************************************/
+	Car& Car::operator=(const Car& source)
+	{
+		if (this == &source)
+		{
+			return *this;
+		}
+		int i;
+		for (i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				cout << "Destructeur d'option apres operation =" << endl;
+				delete option[i];
+				option[i] = nullptr;
+			}
+		}
+
+		name = source.name;
+		setModel(source.model);
+		for (i = 0; i < 5; i++)
+		{
+			if (source.option[i] != nullptr)
+			{
+				option[i] = new Option(*source.option[i]);
+			}
+			else
+			{
+				option[i] = nullptr;
+			}
+		}
+		return *this;
+	}
+	Car Car::operator+(const Option& o) const
+	{
+		Car resultat(*this);
+		resultat.addOption(o);
+		return resultat;
+	}
+	Car operator+(const Option& o, const Car& c)
+	{
+		Car resultat(c);
+		resultat.addOption(o);
+		return resultat;
+	}
+	Car Car::operator-(const Option& o) const
+	{
+		Car resultat(*this);
+		resultat.removeOption(o.getCode());
+		return resultat;
+	}
+	Car Car::operator-(const string s) const
+	{
+		Car resultat(*this);
+		resultat.removeOption(s);
+		return resultat;
+	}
+	bool Car::operator<(const Car& c) const
+	{
+		return this->getPrice() < c.getPrice();
+
+	}
+	bool Car::operator>(const Car& c) const
+	{
+		return this->getPrice() > c.getPrice();
+
+	}
+	bool Car::operator==(const Car& c) const
+	{
+		return this->getPrice() == c.getPrice();
+	}
+	Option* Car::operator[](int i)
+	{
+	    if (i < 0 || i > 6)
+	    {
+	        throw OptionException("Erreur : indice d'option invalide (doit être entre 1 et 6) !");
+	    }
+
+	    return option[i];
+	}
+	/*************************************************			OPERATEUR << et >> *****************************************************************/
+
+	ostream& operator<<(ostream& s, const Car& c)
+	{
+		s << "<Car>" << endl;
+		s << "<name>" << endl;
+		s << c.name << endl;
+		s << "</name>" << endl;
+		s << c.model;
+		s << "<options>" << endl;
+		for (int i = 0; i < 5; i++)
+		{
+			if (c.option[i] != nullptr)
+			{
+				s << *(c.option[i]);
+			}
+		}
+		s << "</options>" << endl;
+		s << "</Car>" << endl;
+		return s;
+	}
+	istream& operator>>(istream& s, Car& c)
+	{
+		string line;
+		getline(s, line); // car
+		getline(s, line); // name
+		getline(s, line); // variable
+		c.setName(line);
+		getline(s, line); // /name
+		s >> c.model;
+		getline(s, line); // options
+		int i = 0;
+	    while (i < 5)
+	    {
+	        streampos pos = s.tellg();  // mémorise la position avant lecture
+	        getline(s, line);           // lit une ligne pour vérifier
+	        if (line == "</options>")
+	            break;                  // fin des options
+
+	        s.seekg(pos);               // recule le flux au début de la ligne
+	        c.option[i] = new Option;
+	       	s >> *c.option[i];          // lit l'option complète
+
+	        i++;
+	    }
+		getline(s, line); // /car
+		return s;
+	}
+	/***********************************************************************************************************************************************/
+	/************************************					AUTRES FONCTIONS						************************************************/
+	/***********************************************************************************************************************************************/
+
+	/***********************************************************************************************************************************************/
+	/************************************					DISPLAY						************************************************************/
+	/***********************************************************************************************************************************************/
+	void Car::display()
+	{
+		cout << name << endl;
+		model.display();
+		bool isTrue = false;
+		for (int i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				cout << "Option " << i+1 << " :" << endl;
+				option[i]->display();
+				isTrue = true;
+			}
+		}
+		if (!isTrue)
+		{
+			cout << "Aucune option detectee" << endl;
+		}
+		cout << endl << endl;
+	}
+
+	/***********************************************************************************************************************************************/
+	/************************************					SETTERS						************************************************************/
+	/***********************************************************************************************************************************************/
+	void Car::setName(const string copy)
+	{
+		name = copy;
+	}
+
+	void Car::setModel(const Model& m)
+	{
+		model = m; // utilisation operateur = pour pouvoir copier l'image aussi
+	}	
+	void Car::addOption(const Option& o)
+	{
+		int i, indice;
+		for (i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				if (option[i]->getCode() == o.getCode())
+				{
+					throw OptionException("L'option existe deja dans la voiture");
+				}
+			}
+		}
+		for (int i = 0; i < 5; i++)
+	    {
+	        if (option[i] == nullptr)
+	        {
+	            option[i] = new Option(o);
+	            return;
+	        }
+	    }
+		throw OptionException("Erreur : nombre maximal d'options atteint !");
+	}
+	
+	/***********************************************************************************************************************************************/
+	/************************************					GETTERS						************************************************************/
+	/***********************************************************************************************************************************************/
+	Model Car::getModel() const
+	{
+		return model;
+	}
+	string Car::getName() const
+	{
+		return name;
+	}
+	float Car::getPrice() const
+	{
+		int i;
+		float sum = model.getBasePrice();
+		for (i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr)
+			{
+				sum += option[i]->getPrice();
+			}
+		}
+		return sum;
+	}
+	// Autres fonctions:
+	void Car::removeOption(string code)
+	{
+		int i;
+		bool isTrue = false;
+		for (i = 0; i < 5; i++)
+		{
+			if (option[i] != nullptr && option[i]->getCode() == code)
+			{
+				delete option[i];
+				isTrue = true;
+				option[i] = nullptr;
+				return;
+			}
+		}
+		if (!isTrue)
+		{
+			throw OptionException("L'option que vous voulez supprimer n'existe pas");
+		}
+	}
+	/***********************************************************************************************************************************************/
+	/************************************					XML						****************************************************************/
+	/***********************************************************************************************************************************************/
+	void Car::save()
+	{
+		fstream fd;
+		string fn = name + ".xml";
+		fd.open(fn, ios::out);
+		if (!fd.is_open())
+		{
+			cout << "Fichier introuvable";
+			return;
+		}
+		fd << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		fd << *this;
+		fd.close();
+	}
+	void Car::load(string projectName)
+	{
+		fstream fd;
+		string fn = projectName + ".xml";
+		fd.open(fn, ios::in);
+		if(!fd.is_open())
+		{
+			cout << "Fichier introuvable";
+			return;
+		}
+		cout << "Ouverture reussi" << endl;
+		string line;
+		getline(fd, line);
+		fd >> *this;
+		fd.close();
+	}
+}
