@@ -1007,6 +1007,37 @@ void ApplicGarageWindow::on_pushButtonNewProject_clicked()
     setPrice(0);
     setModel("---", 0, 0, float(0), "---");
     setCurrentProjectName("---");
+    auto &garage = Garage::getInstance();
+
+    garage.importModelsFromCsv(CSV);
+    garage.importOptionsFromCsv(CSV);
+    int i = 0;
+
+    do
+    {
+        Model m = garage.getModel(i);
+        i++;
+        if (m.getImage().empty())
+        {
+            break;
+        }
+        addAvailableModel(m.getName(), m.getBasePrice());
+    } while(true);
+
+    // Importation des options (étape 10)
+    clearTableOption();
+    i = 0;
+
+    do
+    {
+        Option o = garage.getOption(i);
+        i++;
+        if (o.getLabel().empty())
+        {
+            break;
+        }
+        addAvailableOption(o.getLabel(), o.getPrice());
+    } while(true);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

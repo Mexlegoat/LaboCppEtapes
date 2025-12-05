@@ -51,7 +51,7 @@ namespace carconfig
     // POWER
     getline(s, line); // <power>
     getline(s, line); // variable
-    m.power = stoi(line);
+    m.setPower(stoi(line));
     getline(s, line); // </power>
 
     // ENGINE
@@ -63,7 +63,7 @@ namespace carconfig
     // BASEPRICE
     getline(s, line); // <basePrice>
     getline(s, line); // variable
-    m.basePrice = stof(line);
+    m.setBasePrice(stof(line));
     getline(s, line); // </basePrice>
     getline(s, line); // <image>
     getline(s, line); // variable

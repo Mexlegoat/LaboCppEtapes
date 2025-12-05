@@ -39,8 +39,8 @@ namespace carconfig
 		o.setLabel(line);
 		getline(s, line);
 		getline(s, line);
-		s >> o.price;
 		getline(s, line);
+		o.setPrice(stof(line));
 		getline(s, line);
 		getline(s, line);
 
