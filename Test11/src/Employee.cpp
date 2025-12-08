@@ -39,9 +39,34 @@ Employee::~Employee()
 void Employee::setPassword(const string& pw)
 {
     if (password != nullptr) delete password;
+    if (pw.length() < 6)
+    {
+    	throw PasswordException(PasswordException::INVALID_LENGTH, "Le mot de passe doit avoir au minimum 6 lettres");
+    }
+    char c;
+    bool lettre = false, chiffre = false;
+    for(int i = 0; i < pw.length(); i++)
+    {
+    	c = pw[i];
+    	if (isalpha(c))
+    	{
+    		lettre = true;
+    	}
+    	if (isdigit(c))
+    	{
+    		chiffre = true;
+    	}
+    }
+    if (!lettre)
+    {
+    	throw PasswordException(PasswordException::ALPHA_MISSING, "Mot de passe invalide, il doit contenir au moins 1 lettre");
+    }
+    if (!chiffre)
+    {
+    	throw PasswordException(PasswordException::DIGIT_MISSING, "Mot de passe invalide, il doit contenir au moins 1 chiffre");
+    }
     password = new string(pw);
-}
-void Employee::setRole(const string r)
+}void Employee::setRole(const string r)
 {
 	role = r;
 }
@@ -69,7 +94,7 @@ string Employee::getPassword() const
     if (password != nullptr)
         return *password;
     else
-    	return nullptr;
+    	throw PasswordException(PasswordException::NO_PASSWORD, "L'utilisateur n'a pas encore de mot de passe, vous devez en creer un");
 }
 string Employee::getRole() const
 {
@@ -85,7 +110,7 @@ string Employee::getLastName() const
 }
 int Employee::getCurrentId() const
 {
-	return Actor::currentId;
+	return Actor::currentId - 1;
 }
 string Employee::tuple() const
 {
@@ -101,6 +126,12 @@ string Employee::toString() const
 	{
 		return "[V" + to_string(this->id) + "] " + lastName + " " + firstName;
 	}
+}
+void Employee::resetPassword()
+{
+	if (password != nullptr)
+		delete password;
+	password = nullptr;
 }
 /***************************************************************************************************************************/
 ////////////////////////////////////////////////////////// OPERATORS ////////////////////////////////////////////////////////

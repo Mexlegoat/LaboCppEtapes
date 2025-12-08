@@ -29,6 +29,10 @@ private:
 	Garage& operator=(const Garage& g) = delete;
 	Garage(const Garage& g) = delete;
 public:
+	static int idLoggedEmployee;
+	void setId(int i);
+	int getId() const;
+
 	static Garage& getInstance();
 	static Car& getCurrentProject();
 	static void resetCurrentProject();
@@ -53,6 +57,7 @@ public:
 	const set<Client>& getClients() const;
 
 	int addEmployee(string lastName, string firstName, string login, string role);
+	int modifyEmployee(Employee e, int id);
 	void displayEmployees() const;
 	void deleteEmployeeByIndex(int index);
 	void deleteEmployeeById(int id);

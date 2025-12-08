@@ -45,6 +45,8 @@ string
 -
 Actor.h
 ../Include/Actor.h
+PasswordException.h
+../Include/PasswordException.h
 
 ../Include/Exception.h
 iostream
@@ -104,6 +106,14 @@ string
 Exception.h
 ../Include/Exception.h
 
+../Include/PasswordException.h
+iostream
+-
+string
+-
+Exception.h
+../Include/Exception.h
+
 ../Include/Person.h
 iostream
 -
@@ -151,10 +161,6 @@ QtWidgets/QTableWidget
 -
 QtWidgets/QWidget
 -
-
-/home/student/Bureau/LaboCppEtapes/Test11/src/Garage.cpp
-Garage.h
-/home/student/Bureau/LaboCppEtapes/Test11/src/Garage.h
 
 /home/student/Bureau/LaboCppEtapes/Test11/src/applicgaragewindow.cpp
 applicgaragewindow.h

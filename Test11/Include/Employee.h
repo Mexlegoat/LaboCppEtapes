@@ -4,6 +4,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 #include "Actor.h"
+#include "PasswordException.h"
 class Employee: public Actor
 {
 public:

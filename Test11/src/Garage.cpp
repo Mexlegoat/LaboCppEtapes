@@ -2,6 +2,7 @@
 Garage Garage::instance; // definition de la variable statique
 // definition currentProject
 Car Garage::currentProject;
+int Garage::idLoggedEmployee = 0;
 /**************************************** MODEL ***********************************/
 
 void Garage::addModel(const Model& m)
@@ -163,7 +164,17 @@ int Garage::addEmployee(string lastName, string firstName, string login, string 
 	Actor::currentId++;
 	return 1;
 }
-
+int Garage::modifyEmployee(Employee e, int id)
+{
+	auto it = employees.cbegin();
+	while (it != employees.cend() && it->getId() != id)
+	{
+		it++;
+	}
+	employees.insert(e);
+	cout << "Id Employee: " << id << endl;
+	return 1;
+}
 void Garage::deleteEmployeeByIndex(int index)
 {
 	auto it = employees.cbegin();
@@ -224,6 +235,14 @@ Employee Garage::findEmployeeByIndex(int index) const
 const set<Employee>& Garage::getEmployees() const
 {
 	return employees;
+}
+void Garage::setId(int i)
+{
+	Garage::idLoggedEmployee = i;
+}
+int Garage::getId() const
+{
+	return Garage::idLoggedEmployee;
 }
 /**************************************** INSTANCE ***********************************/
 Garage& Garage::getInstance()
