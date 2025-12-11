@@ -122,6 +122,18 @@ ApplicGarageWindow::ApplicGarageWindow(QWidget *parent) : QMainWindow(parent),ui
     {
         addTupleTableClients(it->tuple());
     }
+    auto& employed = garage.getEmployees();
+    for(auto it = employed.cbegin(); it != employed.cend(); ++it)
+    {
+        it->display();
+        // Employee e;
+        // try
+        // {
+        //     e = *it;
+
+        // }
+        // garage.modifyEmployee(*it, it->getId());
+    }
     setRole();
 
     // ***** TESTS de l'interfac graphique (à supprimer) *****
@@ -228,7 +240,7 @@ void ApplicGarageWindow::setRole(int val)
     if (val == 3)
     {
         ui->actionLogin->setEnabled(true);
-        ui->actionLogout->setEnabled(false);
+        ui->actionLogout->setEnabled(true);
         ui->actionResetPassword->setEnabled(true);
 
         ui->menuEmployees->setEnabled(true);
@@ -964,7 +976,6 @@ void ApplicGarageWindow::on_actionLogin_triggered()
             try
             {
                 e.setPassword(pwd);
-                garage.deleteEmployeeById(garage.getId());
                 garage.modifyEmployee(e, garage.getId());
                 cout << "Id après: " << garage.getId();
                 ok = true;
@@ -1071,7 +1082,6 @@ void ApplicGarageWindow::on_actionResetPassword_triggered()
     auto &garage = Garage::getInstance();
     Employee e = garage.findEmployeeById(garage.getId()); // on recherche l'employé
     e.resetPassword();
-    garage.deleteEmployeeById(garage.getId());
     garage.modifyEmployee(e, garage.getId()); // cette fonction je l'ai ajouté pour aller à l'employé sans besoin de boucle
     dialogMessage("Reset Password", "Votre mot de passe a été réinstialisé avec succès.\nSi vous vous deconnectez, vous devez remettre un mot de passe");
 

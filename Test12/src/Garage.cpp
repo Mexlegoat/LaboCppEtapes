@@ -171,9 +171,9 @@ int Garage::modifyEmployee(Employee e, int id)
 	{
 		it++;
 	}
+	employees.erase(it);
 	employees.insert(e);
 	cout << "Id Employee: " << id << endl;
-	cout << "Password:" << e.getPassword() << endl;
 	return 1;
 }
 void Garage::deleteEmployeeByIndex(int index)
@@ -370,7 +370,7 @@ int Garage::save()
 	NomConcat = "config.dat";
 	NomFichier = NomConcat.c_str();
 	int fd;
-	if ((fd = open(NomFichier, O_WRONLY | O_CREAT, 0777)) == -1)
+	if ((fd = open(NomFichier, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
 	{
 		cerr << "Une erreur est survenue lors de l'ouverture du fichier";
 		return -1;

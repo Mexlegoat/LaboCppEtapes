@@ -206,3 +206,10 @@ bool Employee::operator<(const Employee& e) const
 {
 	return this->getLastName() < e.getLastName();
 }
+void Employee::display() const
+{
+	if (password != nullptr)
+		cout << "Mot de passe employe actuel: " << password << endl;
+	else
+		cout << "Pas de mot de passe" << endl;
+}
