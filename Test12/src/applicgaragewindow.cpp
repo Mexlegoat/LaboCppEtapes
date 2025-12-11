@@ -122,18 +122,6 @@ ApplicGarageWindow::ApplicGarageWindow(QWidget *parent) : QMainWindow(parent),ui
     {
         addTupleTableClients(it->tuple());
     }
-    auto& employed = garage.getEmployees();
-    for(auto it = employed.cbegin(); it != employed.cend(); ++it)
-    {
-        it->display();
-        // Employee e;
-        // try
-        // {
-        //     e = *it;
-
-        // }
-        // garage.modifyEmployee(*it, it->getId());
-    }
     setRole();
 
     // ***** TESTS de l'interfac graphique (à supprimer) *****
@@ -664,9 +652,9 @@ float ApplicGarageWindow::dialogPromptFloat(const char* title,const char* questi
 void ApplicGarageWindow::on_actionQuit_triggered()
 {
     // TO DO (étape 12)
+    cout << ">>> Clic sur item Quitter <<<" << endl;
     auto& garage = Garage::getInstance();
     garage.save();
-    cout << ">>> Clic sur item Quitter <<<" << endl;
 
     QApplication::exit();
 }

@@ -387,14 +387,16 @@ int Garage::save()
 		strncpy(cr.login, e.getLogin().c_str(), sizeof(cr.login)-1);
 		cr.login[sizeof(cr.login)-1] = '\0';   // toujours terminer par '\0'
 		cout << "login: " << cr.login;
-		if (e.getPassword() != "")
+		try
 		{
 		    strncpy(cr.password, e.getPassword().c_str(), sizeof(cr.password)-1);
 		    cr.password[sizeof(cr.password)-1] = '\0';
-		} 
-		else 
+
+		}
+		catch(PasswordException& p)
 		{
 		    cr.password[0] = '\0';
+
 		}
 		cout << "password: " << cr.password;
 		crypt(cr);
@@ -513,8 +515,10 @@ int Garage::load()
 		}
 		decrypt(cr);
 		e.setLogin(string(cr.login));
-		e.setPassword(string(cr.password));
-		cout << "Password:" << e.getPassword();
+		if (cr.password[0] != '\0')
+		{
+			e.setPassword(cr.password);
+		}
 		modifyEmployee(e, e.getId());
 		i++;
 	}
