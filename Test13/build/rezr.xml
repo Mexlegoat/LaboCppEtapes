@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Car>
+<name>
+rezr
+</name>
+<Model>
+<name>
+208 Active 1.2 PureTech 75
+</name>
+<power>
+75
+</power>
+<engine>
+0
+</engine>
+<basePrice>
+18050
+</basePrice>
+<image>
+208.jpg
+</image>
+</Model>
+<options>
+</options>
+</Car>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Contracts>
+<Contract>
+<id>
+1
+</id>
+<seller>
+admin admin
+</seller>
+<client>
+Vendeur Vendeur
+</client>
+<projectName>
+rezr
+</projectName>
+</Contract>
+<Contract>
+<id>
+2
+</id>
+<seller>
+Vendeur Vendeur
+</seller>
+<client>
+idd idd
+</client>
+<projectName>
+ProjetAdmin
+</projectName>
+</Contract>
+</Contracts>
