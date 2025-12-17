@@ -500,7 +500,9 @@ int Garage::load()
 			try
 			{
 				Employee e = FE->read();
-				addEmployee(e.getLastName(),e.getFirstName(),e.getLogin(),e.getRole());
+				employees.insert(e);
+				if (e.getId() >= Actor::currentId)
+    				Actor::currentId = e.getId() + 1;
 			}
 			catch(const XmlFileSerializerException& x)
 			{
@@ -536,7 +538,9 @@ int Garage::load()
 			try
 			{
 				Client c = FC->read();
-				addClient(c.getLastName(), c.getFirstName(), c.getGsm());
+				clients.insert(c);
+				if (c.getId() >= Actor::currentId)
+    				Actor::currentId = c.getId() + 1;
 			}
 			catch(const XmlFileSerializerException& x)
 			{

@@ -17,7 +17,7 @@ public:
 	string getLastName() const;
 	string tuple() const override;
 	string toString() const override;
-	int getCurrentId() const;
+	int getId() const;
 	friend ostream& operator<<(ostream& s, const Client& c);
 	friend istream& operator>>(istream& s, Client& c);
 	bool operator<(const Client& c) const;

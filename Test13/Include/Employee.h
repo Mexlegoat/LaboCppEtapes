@@ -30,7 +30,7 @@ public:
 	string getRole() const;
 	string getLogin() const;
 	string getLastName() const;
-	int getCurrentId() const;
+	int getId() const;
 	void display() const;
 	friend ostream& operator<<(ostream& s, const Employee& e);
 	friend istream& operator>>(istream& s, Employee& e);

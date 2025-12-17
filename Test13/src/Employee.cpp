@@ -109,9 +109,9 @@ string Employee::getLastName() const
 {
 	return lastName;
 }
-int Employee::getCurrentId() const
+int Employee::getId() const
 {
-	return Actor::currentId - 1;
+	return this->id;
 }
 string Employee::tuple() const
 {

@@ -33,9 +33,9 @@ string Client::getLastName() const
 {
 	return lastName;
 }
-int Client::getCurrentId() const
+int Client::getId() const
 {
-	return Actor::currentId;
+	return this->id;
 }
 // Affichage
 string Client::tuple() const 
