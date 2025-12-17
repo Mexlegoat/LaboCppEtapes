@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Car>
 <name>
-ProjetAdmin
+Projetissam
 </name>
 <Model>
 <name>
-208 Active 1.2 PureTech 75
+508SW GT Line 1.6 Hybrid 225
 </name>
 <power>
-75
+180
 </power>
 <engine>
-0
+3
 </engine>
 <basePrice>
-18050
+50750
 </basePrice>
 <image>
-208.jpg
+508SW.jpg
 </image>
 </Model>
 <options>
@@ -30,6 +30,17 @@ Peinture metallisee
 </label>
 <price>
 400
+</price>
+</Option>
+<Option>
+<code>
+OK01
+</code>
+<label>
+Toit panoramique vitre
+</label>
+<price>
+450
 </price>
 </Option>
 </options>

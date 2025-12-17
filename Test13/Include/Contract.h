@@ -16,6 +16,7 @@ public:
 	static int currentId;
 	Contract();
 	Contract(int id, string, string, string);
+	Contract(const Contract& c);
 	void setSeller(string);
 	void setId(int);
 	void setClient(string);

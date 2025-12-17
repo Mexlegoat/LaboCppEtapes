@@ -2,21 +2,21 @@
 <Contracts>
 <Contract>
 <id>
-1
+2
 </id>
 <seller>
-admin admin
+Vendeur Vendeur
 </seller>
 <client>
-Vendeur Vendeur
+issam issam
 </client>
 <projectName>
-rezr
+Projetissam
 </projectName>
 </Contract>
 <Contract>
 <id>
-2
+3
 </id>
 <seller>
 Vendeur Vendeur
@@ -25,7 +25,21 @@ Vendeur Vendeur
 idd idd
 </client>
 <projectName>
-ProjetAdmin
+Projetidd
+</projectName>
+</Contract>
+<Contract>
+<id>
+5
+</id>
+<seller>
+Vendeur Vendeur
+</seller>
+<client>
+admin admin
+</client>
+<projectName>
+ar
 </projectName>
 </Contract>
 </Contracts>

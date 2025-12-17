@@ -14,6 +14,13 @@ Contract::Contract(int i, string s, string c, string p)
 	setSeller(s);
 	setProjectName(p);
 }
+Contract::Contract(const Contract& c)
+{
+	setId(c.getId());
+	setClient(c.getClient());
+	setSeller(c.getSeller());
+	setProjectName(c.getProjectName());
+}
 void Contract::setId(int i)
 {
 	id = i;
@@ -89,7 +96,7 @@ istream& operator>>(istream& s, Contract& c)
 }
 string Contract::tuple() const
 {
-	return to_string(id) + ";" + this->getSeller() + ";" + this->getClient() + ";" + this->getProjectName();
+	return to_string(this->id) + ";" + this->seller + ";" + this->client + ";" + this->projectName;
 }
 Contract& Contract::operator=(const Contract& c)
 {
@@ -101,5 +108,5 @@ Contract& Contract::operator=(const Contract& c)
 }
 bool Contract::operator<(const Contract& c) const
 {
-	return this->getSeller() < c.getSeller();
+	return id < c.id;
 }

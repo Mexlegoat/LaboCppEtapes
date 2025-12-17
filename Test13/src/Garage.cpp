@@ -249,7 +249,7 @@ int Garage::getId() const
 
 int Garage::addContract(int i, string s, string c, string p)
 {
-	contracts.insert(Contract(i, s, c, p));
+	contracts.push_back(Contract(i, s, c, p));
 	cout << "Id Contract: " << Contract::currentId << endl;
 	cout << "Nom: " << s  << " " <<  c << endl;
 	Contract::currentId++;
@@ -257,12 +257,8 @@ int Garage::addContract(int i, string s, string c, string p)
 }
 void Garage::deleteContractByIndex(int index)
 {
-	auto it = contracts.cbegin();
-	advance(it, index);
-	if (it != contracts.cend())
-	{
-		contracts.erase(it);
-	}
+	if (index >= 0 && index < contracts.size())
+    	contracts.erase(contracts.begin() + index);
 	else
 	{
 		cout << "Index hors limite (Contract)" << endl;
@@ -287,12 +283,8 @@ void Garage::deleteContractById(int id)
 }
 Contract Garage::findContractByIndex(int index) const
 {
-	auto it = contracts.cbegin();
-	advance(it, index);
-	if (it != contracts.cend())
-	{
-		return *it;
-	}
+	if(index >= 0 && index < contracts.size())
+    	return contracts[index];
 	cout << "Index hors limite" << endl;
 	return Contract();
 }
@@ -310,7 +302,7 @@ Contract Garage::findContractById(int id) const
 	cout << "Id Contract hors limite" << endl;
 	return Contract();
 }
-const set<Contract>& Garage::getContracts() const
+const vector<Contract>& Garage::getContracts() const
 {
 	return contracts;
 }
@@ -438,14 +430,9 @@ int Garage::save()
 	delete FC;
 	NomConcat = "contract.xml";
 	XmlFileSerializer<Contract> *FCO = new XmlFileSerializer<Contract>(NomConcat, XmlFileSerializer<Contract>::WRITE, "Contracts");
-	auto its = contracts.cbegin();
-	i = 1;
-	while(its != contracts.cend())
+	for(auto its = contracts.cbegin(); its != contracts.cend(); ++its)
 	{
-		Contract co = findContractById(i);
-		FCO->write(co);
-		i++;
-		its++;
+	    FCO->write(*its);
 	}
 	delete FCO;
 	NomConcat = "config.dat";
@@ -584,7 +571,9 @@ int Garage::load()
 			try
 			{
 				Contract s = FCO->read();
-				addContract(s.getId(), s.getClient(), s.getSeller(), s.getProjectName());
+				addContract(s.getId(), s.getSeller(), s.getClient(), s.getProjectName());
+				if (s.getId() == Contract::currentId)
+					Contract::currentId = s.getId() + 1;
 			}
 			catch(const XmlFileSerializerException& x)
 			{

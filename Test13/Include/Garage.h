@@ -22,6 +22,7 @@
 #include "XmlFileSerializerException.h"
 
 #include <set>
+#include <vector>
 #include <list>
 using namespace std;
 using namespace carconfig;
@@ -31,7 +32,7 @@ class Garage
 private:
 	set<Employee> employees;
 	set<Client> clients;
-	set<Contract> contracts;
+	vector<Contract> contracts;
 	list<Model> models;
 	list<Option> options;
 	Garage() = default;
@@ -81,7 +82,7 @@ public:
 	void deleteContractById(int id);
 	Contract findContractByIndex(int index) const;
 	Contract findContractById(int id) const;
-	const set<Contract>& getContracts() const;
+	const vector<Contract>& getContracts() const;
 
 
 	// applicgarage import
