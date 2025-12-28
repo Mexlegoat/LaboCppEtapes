@@ -1290,9 +1290,6 @@ void ApplicGarageWindow::on_pushButtonNewProject_clicked()
     Garage::getInstance().resetCurrentProject();
     c = Garage::getInstance().getCurrentProject();
     clearTableOption();
-    clearTableClients();
-    clearTableContracts();
-    clearTableEmployees();
     clearComboBoxAvailableModels();
     clearComboBoxAvailableOptions();
     setPrice(0);
