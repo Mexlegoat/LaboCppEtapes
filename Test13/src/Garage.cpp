@@ -333,7 +333,7 @@ void Garage::importModelsFromCsv(string filename)
 		return;
 	}
 	string line;
-	getline(fd, line); // skip entete
+	getline(fd, line); // entete
 	while (getline(fd, line))
 	{
 		string name, basePriceStr, powerStr, image, engineStr;
@@ -344,7 +344,6 @@ void Garage::importModelsFromCsv(string filename)
 		getline(iss, image, ';');
 		getline(iss, basePriceStr, ';');
 
-		// creer un model pour la combobox
 		Model m;
 
 		m.setName(name.c_str());
@@ -353,7 +352,6 @@ void Garage::importModelsFromCsv(string filename)
 		m.setPower(stoi(powerStr));
 		m.setImage(image);
 
-		// créer une liste pour que quand on appelle cette fonction dans applicgarage on peut parcourir la liste
 		addModel(m);
 
 	}
@@ -369,7 +367,7 @@ void Garage::importOptionsFromCsv(string filename)
 		return;
 	}
 	string line;
-	getline(fd, line); // skip entete
+	getline(fd, line); // entete
 	while (getline(fd, line))
 	{
 		string code, label, priceStr;
@@ -378,7 +376,6 @@ void Garage::importOptionsFromCsv(string filename)
 		getline(iss, label, ';');
 		getline(iss, priceStr, ';');
 
-		// creer une option pour la combobox
 		Option o;
 		try
 		{
@@ -391,7 +388,6 @@ void Garage::importOptionsFromCsv(string filename)
 	        cout << op.getMessage();
 		}
 
-		// créer une liste pour que quand on appelle cette fonction dans applicgarage on peut parcourir la liste
 		addOption(o);
 
 	}
@@ -453,7 +449,7 @@ int Garage::save()
 		Credentials cr;
 		Employee e = findEmployeeByIndex(i);
 		strncpy(cr.login, e.getLogin().c_str(), sizeof(cr.login)-1);
-		cr.login[sizeof(cr.login)-1] = '\0';   // toujours terminer par '\0'
+		cr.login[sizeof(cr.login)-1] = '\0';
 		cout << "login: " << cr.login;
 		try
 		{

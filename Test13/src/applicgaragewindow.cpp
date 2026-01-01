@@ -713,7 +713,7 @@ void ApplicGarageWindow::on_actionNewModel_triggered()
     cout << "basePrice = " << basePrice << endl;
     cout << "image = " << image << endl;
     addAvailableModel(modelName, basePrice);
-    Garage::getInstance().addModel(m); // ! le constructeur de copie doit contenir le setImage() dans Model.cpp
+    Garage::getInstance().addModel(m);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -932,9 +932,9 @@ void ApplicGarageWindow::on_actionLogin_triggered()
     int d;
     bool isTrue = false;
     string pwd;
-    for(auto it = employees.cbegin(); it != employees.cend(); ++it) // on essaye de voir si l'utilisateur existe dans la liste
+    for(auto it = employees.cbegin(); it != employees.cend(); ++it)
     {
-        if(login == it->getLogin()) // si il existe
+        if(login == it->getLogin()) // existe
         {
             isTrue = true;
             cout << "Test:" << it->getId() << endl;
@@ -943,7 +943,7 @@ void ApplicGarageWindow::on_actionLogin_triggered()
             break;
         }
     }
-    if (!isTrue) // si il n'existe pas
+    if (!isTrue) // faux
     {
         dialogError("Erreur Login", "Le login n'existe pas");
         return;
@@ -952,9 +952,9 @@ void ApplicGarageWindow::on_actionLogin_triggered()
     Employee e = garage.findEmployeeById(garage.getId());
     try
     {
-        pwd = e.getPassword(); // on regarde si l'employé a un mdp
+        pwd = e.getPassword(); // mdp?
         string pw = dialogPromptText("Mot de passe", "Veuillez saisir un mot de passe");
-        if (pw != pwd) // si faux
+        if (pw != pwd) // faux
         {
             dialogError("Mot de passe", "Mot de passe invalide");
             return;
@@ -1081,9 +1081,9 @@ void ApplicGarageWindow::on_actionResetPassword_triggered()
 {
     // TO DO (étape 11)
     auto &garage = Garage::getInstance();
-    Employee e = garage.findEmployeeById(garage.getId()); // on recherche l'employé
+    Employee e = garage.findEmployeeById(garage.getId()); // recherche
     e.resetPassword();
-    garage.modifyEmployee(e, garage.getId()); // cette fonction je l'ai ajouté pour aller à l'employé sans besoin de boucle
+    garage.modifyEmployee(e, garage.getId()); // modifier
     dialogMessage("Reset Password", "Votre mot de passe a été réinstialisé avec succès.\nSi vous vous deconnectez, vous devez remettre un mot de passe");
 
     cout << ">>> clic sur item ResetPassword <<<" << endl;
@@ -1217,9 +1217,9 @@ void ApplicGarageWindow::on_pushButtonReduction_clicked()
             op.setLabel(c[indice]->getLabel());
             try
             {
-                op.setPrice(c[indice]->getPrice()); // On récupère le prix
-                op--; // on décrémente
-                c[indice]->setPrice(op.getPrice()); // on remet le prix dans car comme ça la prochaine fois on aura ce prix la et pas l'autre
+                op.setPrice(c[indice]->getPrice()); // prix
+                op--; // decrementer
+                c[indice]->setPrice(op.getPrice());
             }
             catch(OptionException& o)
             {
