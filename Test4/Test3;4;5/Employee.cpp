@@ -13,6 +13,8 @@ Employee::Employee(string l, string f, int i, string lo, string r):Actor(l, f ,i
 	password = nullptr;
 	this->setLogin(lo);
 	this->setRole(r);
+	
+	cout << "Classe Derivee" << endl;
 }
 Employee::Employee(const Employee& e):Actor(e)
 {

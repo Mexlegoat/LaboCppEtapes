@@ -10,6 +10,8 @@ Actor::Actor():Person()
 Actor::Actor(string l, string f, int i):Person(l, f)
 {
 	this->setId(i);
+
+	cout << "Classe Base" << endl;
 }
 
 Actor::Actor(const Actor& a):Person(a)

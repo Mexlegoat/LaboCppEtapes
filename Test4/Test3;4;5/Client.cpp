@@ -9,6 +9,8 @@ Client::Client():Actor()
 Client::Client(string l, string f, int i, string g):Actor(l, f, i)
 {
 	this->setGsm(g);
+	
+	cout << "Classe Derivee" << endl;
 }
 Client::Client(const Client& c):Actor(c)
 {
