@@ -111,24 +111,7 @@ ApplicGarageWindow::ApplicGarageWindow(QWidget *parent) : QMainWindow(parent),ui
 
     // Lecture de config.dat, des employees, clients et contrats (étape 12)
     garage.load();
-    auto &employees = garage.getEmployees();
-    for(auto it = employees.cbegin(); it != employees.cend(); ++it)
-    {
-        addTupleTableEmployees(it->tuple());
-
-    }
-    auto& clients = garage.getClients();
-    for(auto it = clients.cbegin(); it != clients.cend(); ++it)
-    {
-        addTupleTableClients(it->tuple());
-    }
-    auto& contracts = garage.getContracts();
-    for(auto it = contracts.cbegin(); it != contracts.cend(); ++it)
-    {
-        addTupleTableContracts(it->tuple());
-
-    }
-    setRole();
+    setRole(0);
 
     // ***** TESTS de l'interfac graphique (à supprimer) *****
 }

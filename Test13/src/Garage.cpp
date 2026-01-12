@@ -24,7 +24,7 @@ Model Garage::getModel(int index) const
 		return Model();
 	}
 	auto it = models.cbegin();
-	advance(it, index); // faire avancer it jusqu'à index;
+	advance(it, index); // avancer
 	if (it != models.cend())
 	{
 		return *it;
@@ -446,6 +446,7 @@ int Garage::save()
 	write(fd, &count, sizeof(int));
 	cout << "current employee count: " << count << endl;
 	i = 0;
+	cout << "==========================================" << endl << "POUR NE PAS OUBLIER LES MDP" << endl << "==========================================" << endl;
 	while(i < count)
 	{
 		Credentials cr;
@@ -471,6 +472,7 @@ int Garage::save()
 		write(fd, &cr, sizeof(Credentials));
 		i++;
 	}
+	cout << "==========================================" << endl <<  "" << endl << "==========================================" << endl;
 	close(fd);
 	return 1;
 
@@ -578,7 +580,7 @@ int Garage::load()
 			{
 				Contract s = FCO->read();
 				addContract(s.getId(), s.getSeller(), s.getClient(), s.getProjectName());
-				if (s.getId() == Contract::currentId)
+				if (s.getId() >= Contract::currentId)
 					Contract::currentId = s.getId() + 1;
 			}
 			catch(const XmlFileSerializerException& x)
